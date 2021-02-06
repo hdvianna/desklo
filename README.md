@@ -18,6 +18,7 @@ git clone https://github.com/luigivercottidev/desklo.git
 ```
 
 **[Figure 1 - GitHub Fork button]**
+
 ![GitHub Desklo repository screenshot highlighting the Fork button in red](https://raw.githubusercontent.com/hdvianna/desklo/main/intructions/fork-button.png "Figure 1")
 
 
