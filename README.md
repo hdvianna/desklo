@@ -17,7 +17,7 @@ After installing the git and forking the repository you can open a terminal (or 
 git clone https://github.com/luigivercottidev/desklo.git
 ```
 
-[Figure 1 - GitHub Fork button]
+**[Figure 1 - GitHub Fork button]**
 ![GitHub Desklo repository screenshot highlighting the Fork button in red](https://raw.githubusercontent.com/hdvianna/desklo/main/intructions/fork-button.png "Figure 1")
 
 
