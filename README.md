@@ -9,10 +9,11 @@ This project is managed with the Git version control system and developed with t
 
 First, download the git client at https://git-scm.com/
 
-After installing it you can open a terminal (or command prompt) to clone the repository using the following command:
-```bash
-git clone https://github.com/hdvianna/desklo.git 
-```
+Then, you can fork the Desklo project to your profile. To do this, go the address https://github.com/hdvianna/desklo and click in the fork button (see Figure 1). A popup will be opened asking "Where should we fork sample?". The select your profile.
+
+After installing the git and forking the repository you can open a terminal (or command prompt) to clone the repository using the following command `git clone https://github.com/<my-user-name>/desklo.git`, where my `<my-user-name>` is the name of your GitHub profile. For example, `git clone https://github.com/luigivercottidev/desklo.git`
+
+![Figure 1](https://raw.githubusercontent.com/hdvianna/desklo/main/intructions/fork-button.png "Figure 1")
 
 ### JDK
 
@@ -21,4 +22,6 @@ Go to the address https://www.oracle.com/java/technologies/javase-jdk15-download
 ### Netbeans
 
 Go to the address https://netbeans.apache.org/download/nb120/nb120.html and download the installer suitable for your operating system (Windows, Linux, or macOS). Then execute the installer after its download.
+
+
 
