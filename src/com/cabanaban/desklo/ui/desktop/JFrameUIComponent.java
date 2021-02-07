@@ -24,7 +24,7 @@ public class JFrameUIComponent implements com.cabanaban.ui.UIComponent{
     public void hide() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                jframe.setVisible(true);
+                jframe.setVisible(false);
             }
         });
     }
