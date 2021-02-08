@@ -4,7 +4,9 @@ import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.KeyEvent;
+import javax.swing.JComponent;
+import com.cabanaban.desklo.viewmodel.MainViewModel;
+import com.cabanaban.desklo.viewmodel.MenuViewModel;
 
 /**
  * https://docs.oracle.com/javase/tutorial/uiswing/layout/group.html
@@ -17,26 +19,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
     JDesktopPane desktop;
     JMenuBar menuBar;
-    JMenu menu;
-    JMenuItem menuItem;
+    MainViewModel mainViewModel;
 
-    public MainJFrame() {
+    public MainJFrame(MainViewModel mainViewModel) {
+        super(mainViewModel.title);
+        this.mainViewModel = mainViewModel;
         init();
     }
 
     private void init() {
 
-        desktop = new JDesktopPane();
-        //Create the menu bar.
-        menuBar = new JMenuBar();
-
-        //Build the first menu.
-        menu = new JMenu("A Menu");
-        
-        menuBar.add(menu);
-        menuItem = new JMenuItem("A text-only menu item", KeyEvent.VK_T);
-        
-        menu.add(menuItem);
+        desktop = new JDesktopPane();        
+        menuBar = createMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,11 +48,32 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(desktop)
         );
 
-        SLADashBoardJFrame frame = new SLADashBoardJFrame();
-        desktop.add(frame);
-        frame.setVisible(true);
+        //SLADashBoardJFrame frame = new SLADashBoardJFrame();
+        //desktop.add(frame);
+        //frame.setVisible(true);
         setJMenuBar(menuBar);
         pack();
-    }// </editor-fold>                        
+    }
+    
+    private JMenuBar createMenuBar() {
+        menuBar = new JMenuBar();
+        appendMenuItems(menuBar, this.mainViewModel.menusViewModel, true);        
+        return menuBar;
+    }
+    
+    private void appendMenuItems(JComponent parentMenu, MenuViewModel[] menusViewModel, boolean isMenu) {
+        for(MenuViewModel menuViewModel:menusViewModel) {
+            JMenuItem menuItem;
+            if (isMenu) {
+                menuItem = new JMenu(menuViewModel.description);
+            } else {
+                menuItem = new JMenuItem(menuViewModel.description);
+            }            
+            parentMenu.add(menuItem);
+            appendMenuItems(menuItem, menuViewModel.subItems, false); 
+        }
+    }
+    
+    
 
 }

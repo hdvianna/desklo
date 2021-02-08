@@ -14,5 +14,9 @@ public class Controller {
     private Support support;
 
     private Presenter presenter;
+    
+    public void dispatch(Action action, Object request) {
+        
+    }
 
 }
