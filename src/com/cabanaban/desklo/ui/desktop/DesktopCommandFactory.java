@@ -9,10 +9,15 @@ import com.cabanaban.desklo.repository.TicketRepository;
 import com.cabanaban.desklo.viewmodel.Presenter;
 
 public class DesktopCommandFactory implements CommandFactory {
-
+    
+    private DesktopMainAction mainAction;
+    
     @Override
     public Command createMainAction(Object request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (mainAction == null) {
+            mainAction = new DesktopMainAction(request);
+        }
+        return mainAction;
     }
     
 }

@@ -4,9 +4,9 @@ import com.cabanaban.desklo.controller.Action;
 
 public class DefaultPresenter implements Presenter {
 
-    MainViewModel mainViewModel;
-    MenuViewModel userMenu;
-    MenuViewModel supportMenu;    
+    private MainViewModel mainViewModel;
+    private MenuViewModel userMenu;
+    private MenuViewModel supportMenu;    
     
     @Override
     public MainViewModel getMainViewModelInstance() {
