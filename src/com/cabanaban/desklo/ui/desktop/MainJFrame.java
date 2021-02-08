@@ -5,8 +5,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JComponent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import com.cabanaban.desklo.controller.ActionDispatcher;
 import com.cabanaban.desklo.viewmodel.MainViewModel;
 import com.cabanaban.desklo.viewmodel.MenuViewModel;
+
 
 /**
  * https://docs.oracle.com/javase/tutorial/uiswing/layout/group.html
@@ -17,18 +21,23 @@ import com.cabanaban.desklo.viewmodel.MenuViewModel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    JDesktopPane desktop;
-    JMenuBar menuBar;
-    MainViewModel mainViewModel;
+    private JDesktopPane desktop;
+    private JMenuBar menuBar;
+    private final MainViewModel mainViewModel;
+    private ActionDispatcher dispatcher;
+    private static javax.swing.JFrame instance = null; 
+    
 
-    public MainJFrame(MainViewModel mainViewModel) {
+    public MainJFrame(ActionDispatcher dispatcher, MainViewModel mainViewModel) {
         super(mainViewModel.title);
         this.mainViewModel = mainViewModel;
+        this.dispatcher = dispatcher;
         init();
     }
 
     private void init() {
-
+        MainJFrame.instance = this;
+        
         desktop = new JDesktopPane();        
         menuBar = createMenuBar();
 
@@ -48,9 +57,6 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(desktop)
         );
 
-        //SLADashBoardJFrame frame = new SLADashBoardJFrame();
-        //desktop.add(frame);
-        //frame.setVisible(true);
         setJMenuBar(menuBar);
         pack();
     }
@@ -68,12 +74,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 menuItem = new JMenu(menuViewModel.description);
             } else {
                 menuItem = new JMenuItem(menuViewModel.description);
+                menuItem.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        dispatcher.dispatch(menuViewModel.action, null);
+                    }
+                });
             }            
             parentMenu.add(menuItem);
             appendMenuItems(menuItem, menuViewModel.subItems, false); 
         }
     }
     
-    
+    public static javax.swing.JFrame getInstance() {
+        return MainJFrame.instance;
+    }
 
 }
