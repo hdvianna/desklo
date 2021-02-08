@@ -25,10 +25,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private JMenuBar menuBar;
     private final MainViewModel mainViewModel;
     private ActionDispatcher dispatcher;
-    private static javax.swing.JFrame instance = null; 
+    private static MainJFrame instance = null; 
     
 
-    public MainJFrame(ActionDispatcher dispatcher, MainViewModel mainViewModel) {
+    private MainJFrame(ActionDispatcher dispatcher, MainViewModel mainViewModel) {
         super(mainViewModel.title);
         this.mainViewModel = mainViewModel;
         this.dispatcher = dispatcher;
@@ -36,7 +36,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     private void init() {
-        MainJFrame.instance = this;
         
         desktop = new JDesktopPane();        
         menuBar = createMenuBar();
@@ -85,7 +84,14 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }
     
-    public static javax.swing.JFrame getInstance() {
+    public static MainJFrame getInstance(ActionDispatcher dispatcher, MainViewModel mainViewModel) {
+        if (MainJFrame.instance == null) {
+            MainJFrame.instance = new MainJFrame(dispatcher, mainViewModel);
+        }
+        return MainJFrame.instance;
+    }
+    
+    public static MainJFrame getInstance() {
         return MainJFrame.instance;
     }
 
