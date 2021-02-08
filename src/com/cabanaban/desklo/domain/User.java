@@ -64,7 +64,7 @@ public class User {
         this.sla = sla;
     }
     
-    public Ticket openSupportTicket(String problem) {
+    public Ticket createSupportTicket(String problem) {
         return new Ticket(this, problem);
     }    
     
