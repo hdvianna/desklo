@@ -64,4 +64,12 @@ public class DefaultPresenter implements Presenter {
         return supportMenu;
     }
 
+    @Override
+    public ResponseViewModel getNotFoundViewModelInstance() {
+        ResponseViewModel responseViewModel = new ResponseViewModel();
+        responseViewModel.status = 404;
+        responseViewModel.response = "Funcionalidade não implementada.";
+        return responseViewModel;
+    }
+
 }

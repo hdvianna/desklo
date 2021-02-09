@@ -5,17 +5,20 @@ import com.cabanaban.desklo.repository.TicketRepository;
 import com.cabanaban.desklo.viewmodel.Presenter;
 import com.cabanaban.desklo.controller.ActionDispatcher;
 import com.cabanaban.desklo.domain.DefaultSupportManager;
+import com.cabanaban.desklo.controller.ResponseHandlerFactory;
 
 public interface Services {
 
-    public abstract UserRepository getUserRepository();
+    public UserRepository getUserRepository();
 
-    public abstract TicketRepository getTicketRepository();
+    public TicketRepository getTicketRepository();
 
-    public abstract DefaultSupportManager getDefaultSupportManager();
+    public DefaultSupportManager getDefaultSupportManager();
 
-    public abstract Presenter getPresenter();
+    public Presenter getPresenter();
 
-    public abstract ActionDispatcher getDispatcher();
+    public ActionDispatcher getDispatcher();
+    
+    public ResponseHandlerFactory getResponseHandlerFactory();
 
 }

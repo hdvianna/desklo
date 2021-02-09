@@ -4,7 +4,6 @@ import com.cabanaban.desklo.repository.UserRepository;
 import com.cabanaban.desklo.repository.TicketRepository;
 import com.cabanaban.desklo.viewmodel.Presenter;
 import com.cabanaban.desklo.Services;
-import com.cabanaban.common.Command;
 import com.cabanaban.desklo.domain.DefaultSupportManager;
 
 public class Controller implements ActionDispatcher, Services {
@@ -16,13 +15,18 @@ public class Controller implements ActionDispatcher, Services {
     private DefaultSupportManager defaultSupportManager;
 
     private Presenter presenter;
+    
+    private ResponseHandlerFactory responseHandlerFactory;
 
-    private final CommandFactory commandFactory;
-
-    public Controller(CommandFactory commandFactory) {
-        this.commandFactory = commandFactory;
+    public Controller(UserRepository userRepository, TicketRepository ticketRepository, DefaultSupportManager defaultSupportManager, Presenter presenter, ResponseHandlerFactory responseHandlerFactory) {
+        this.userRepository = userRepository;
+        this.ticketRepository = ticketRepository;
+        this.defaultSupportManager = defaultSupportManager;
+        this.presenter = presenter;
+        this.responseHandlerFactory = responseHandlerFactory;
     }
-
+    
+    
     @Override
     public void dispatch(Services services, Action action, Object request) {
         //SLADashBoardJFrame frame = new SLADashBoardJFrame();
@@ -31,14 +35,12 @@ public class Controller implements ActionDispatcher, Services {
         try {
             switch (action) {
                 case SHOW_MAIN -> {
-                    Command command;
-                    command = commandFactory.createMainAction(services, request);
-                    command.execute();
+                    RequestHandler mainRequestHandler = new MainRequestHandler(services);
+                    mainRequestHandler.handle(request, responseHandlerFactory.createMainResponseHandler(services));
                 }
                 default -> {
-                    Command command;
-                    command = commandFactory.createNotImplementedAction(services, request);
-                    command.execute();
+                    RequestHandler notFoundRequestHandler = new NotFoundRequestHandler(services);
+                    notFoundRequestHandler.handle(request, responseHandlerFactory.createNotFoundResponseHandler(services));
                 }
             }
         } catch (Exception exception) {
@@ -71,6 +73,11 @@ public class Controller implements ActionDispatcher, Services {
     @Override
     public DefaultSupportManager getDefaultSupportManager() {
         return defaultSupportManager;
+    }
+
+    @Override
+    public ResponseHandlerFactory getResponseHandlerFactory() {
+        return responseHandlerFactory;
     }
 
 }
