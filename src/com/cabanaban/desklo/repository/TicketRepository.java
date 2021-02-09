@@ -9,6 +9,8 @@ import java.util.List;
 public interface TicketRepository {
 
 	public abstract List<Ticket> findTicketsByStatus(Status status);
+        
+        public abstract List<Ticket> findTicketsByStatusList(List<Status> statusList);
 
 	public abstract List<Ticket> findTicketsByUser(User user);
 

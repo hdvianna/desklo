@@ -21,12 +21,15 @@ public class Ticket {
     private double currentCost;
 
     private Date closeDate;
+    
+    private String ID;
 
     public Ticket(User user, String problem) {
         this.currentCost = 0;
         this.user = user;
         this.problem = problem;
         this.status = Status.TODO;
+        this.openingDate = new Date();
     }
     
     public boolean isLate() {
@@ -91,6 +94,10 @@ public class Ticket {
     public long getCurrentServiceTime() {
         return currentServiceTime;
     }
+    
+    public long getCurrentServiceTimeInHours() {
+        return ((currentServiceTime/1000)/60)/60;
+    }
 
     public void setCurrentServiceTime(long currentServiceTime) {
         this.currentServiceTime = currentServiceTime;
@@ -116,6 +123,12 @@ public class Ticket {
         return currentCost;
     }
 
+    public String getID() {
+        return ID;
+    }
 
+    public void setID(String ID) {
+        this.ID = ID;
+    }
   
 }

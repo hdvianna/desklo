@@ -1,10 +1,15 @@
 package com.cabanaban.desklo.viewmodel;
 
+import com.cabanaban.entity.Ticket;
+import java.util.List;
+
 public interface Presenter {
 
-    public abstract MenuViewModel getUserMenuViewModelInstance();
-    public abstract MenuViewModel getSupportMenuViewModelInstance();
-    public abstract MainViewModel getMainViewModelInstance();
-    public abstract ResponseViewModel getNotFoundViewModelInstance();
-
+    public MenuViewModel getUserMenuViewModelInstance();
+    public MenuViewModel getSupportMenuViewModelInstance();
+    public MainViewModel getMainViewModelInstance();
+    public ResponseViewModel getNotFoundViewModelInstance();
+    public TicketListViewModel createTicketListViewModel(List<Ticket> tickets);
+    public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket);
+    
 }

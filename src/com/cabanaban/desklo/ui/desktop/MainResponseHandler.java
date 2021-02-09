@@ -15,7 +15,7 @@ public class MainResponseHandler extends AbstractResponseHandler {
     
     @Override
     public void handle(Object response) {
-        MainJFrame mainFrame =  MainJFrame.getInstance(services, (MainViewModel) response);
+        MainUI mainFrame =  MainUI.getInstance(services, (MainViewModel) response);
         JFrameUIComponent main = new JFrameUIComponent(mainFrame);
         main.display();
     }

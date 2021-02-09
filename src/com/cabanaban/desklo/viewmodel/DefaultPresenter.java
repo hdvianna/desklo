@@ -1,6 +1,9 @@
 package com.cabanaban.desklo.viewmodel;
 
 import com.cabanaban.desklo.controller.Action;
+import com.cabanaban.entity.Ticket;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DefaultPresenter implements Presenter {
 
@@ -70,6 +73,40 @@ public class DefaultPresenter implements Presenter {
         responseViewModel.status = 404;
         responseViewModel.response = "Funcionalidade não implementada.";
         return responseViewModel;
+    }
+
+    @Override
+    public TicketListViewModel createTicketListViewModel(List<Ticket> tickets) {
+        TicketListViewModel ticketListViewModel = new TicketListViewModel();
+        ticketListViewModel.actionHeaderLabel = "Ações";
+        ticketListViewModel.affectUserHeaderLabel = "Usuário afetado";
+        ticketListViewModel.elapsedTimeHeaderLabel = "Tempo";
+        ticketListViewModel.problemHeaderLabel = "Problema";
+        ticketListViewModel.supporterHeaderLabel = "Técnico";
+        ticketListViewModel.title = "Tickets em atendimento";
+        ticketListViewModel.ticketListItemsViewModel = tickets
+               .stream()
+               .map(ticket -> createTicketListItemViewModel(ticket))
+               .collect(Collectors.toList());
+        return ticketListViewModel;
+    }
+
+    @Override
+    public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket) {
+        TicketListItemViewModel ticketListItemViewModel =  new TicketListItemViewModel();
+        ticketListItemViewModel.actionText = "Gerenciar";
+        ticketListItemViewModel.affectUserName = ticket.getUser().getName();
+        ticketListItemViewModel.elapsedTimeInHours = Long.toString(ticket.getCurrentServiceTimeInHours()) + " horas";
+        ticketListItemViewModel.elapsedTimeLabelColor = "#000000";
+        if (ticket.isLate()) {
+            ticketListItemViewModel.elapsedTimeLabelColor = "#ff0000";
+        }
+        ticketListItemViewModel.problemDescription = ticket.getProblem();
+        if (ticket.getSupport() != null) {
+            ticketListItemViewModel.supporterName = ticket.getSupport().getName();
+        }        
+        ticketListItemViewModel.ticketID = ticket.getID();
+        return ticketListItemViewModel;
     }
 
 }

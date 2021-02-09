@@ -37,14 +37,15 @@ public class Controller implements ActionDispatcher, Services {
     
     @Override
     public void dispatch(Services services, Action action, Object request) {
-        //SLADashBoardJFrame frame = new SLADashBoardJFrame();
-        //desktop.add(frame);
-        //frame.setVisible(true);
         try {
             switch (action) {
                 case SHOW_MAIN -> {
                     RequestHandler mainRequestHandler = new MainRequestHandler(services);
                     mainRequestHandler.handle(request, responseHandlerFactory.createMainResponseHandler(services));
+                }
+                case SHOW_MANAGE_TICKETS -> {
+                    RequestHandler ticketListRequestHandler = new TicketListRequestHandler(services);
+                    ticketListRequestHandler.handle(request, responseHandlerFactory.createTicketListResponseHandler(services));
                 }
                 default -> {
                     RequestHandler notFoundRequestHandler = new NotFoundRequestHandler(services);

@@ -7,11 +7,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JComponent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.List;
 import com.cabanaban.desklo.Services;
 import com.cabanaban.desklo.controller.ActionDispatcher;
 import com.cabanaban.desklo.viewmodel.MainViewModel;
 import com.cabanaban.desklo.viewmodel.MenuViewModel;
+import com.cabanaban.desklo.viewmodel.TicketListViewModel;
+import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
 
+import javax.swing.JButton;
+import java.awt.BorderLayout;
 
 /**
  * https://docs.oracle.com/javase/tutorial/uiswing/layout/group.html
@@ -20,20 +25,22 @@ import com.cabanaban.desklo.viewmodel.MenuViewModel;
  * 
  * @author henrique
  */
-public class MainJFrame extends javax.swing.JFrame {
+public class MainUI extends javax.swing.JFrame {
 
     private JDesktopPane desktop;
     private JMenuBar menuBar;
     private final MainViewModel mainViewModel;
     private Services services;
-    private static MainJFrame instance = null; 
+    private static MainUI instance = null;
+    private TicketListUI ticketListUI;
     
 
-    private MainJFrame(Services services, MainViewModel mainViewModel) {
+    private MainUI(Services services, MainViewModel mainViewModel) {
         super(mainViewModel.title);
         this.mainViewModel = mainViewModel;
         this.services = services;
         init();
+        initInternalWindows();
     }
 
     private void init() {
@@ -56,9 +63,13 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGap(0, 720, Short.MAX_VALUE)
                         .addComponent(desktop)
         );
-
+                
+        
         setJMenuBar(menuBar);
+        
+        
         pack();
+       
     }
     
     private JMenuBar createMenuBar() {
@@ -85,15 +96,25 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }
     
-    public static MainJFrame getInstance(Services services, MainViewModel mainViewModel) {
-        if (MainJFrame.instance == null) {
-            MainJFrame.instance = new MainJFrame(services, mainViewModel);
-        }
-        return MainJFrame.instance;
+    private void initInternalWindows() {
+        ticketListUI = new TicketListUI(services);
+        desktop.add(ticketListUI);
     }
     
-    public static MainJFrame getInstance() {
-        return MainJFrame.instance;
+    public void showTicketListUI(TicketListViewModel ticketListViewModel) {
+        ticketListUI.refreshData(ticketListViewModel);
+        ticketListUI.setVisible(true);
+    } 
+    
+    public static MainUI getInstance(Services services, MainViewModel mainViewModel) {
+        if (MainUI.instance == null) {
+            MainUI.instance = new MainUI(services, mainViewModel);
+        }
+        return MainUI.instance;
+    }
+    
+    public static MainUI getInstance() {
+        return MainUI.instance;
     }
 
 }

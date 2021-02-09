@@ -16,5 +16,10 @@ public class DesktopResponseHandlerFactory implements ResponseHandlerFactory {
     public ResponseHandler createNotFoundResponseHandler(Services services) {
         return new NotFoundResponseHandler(services);
     }
+
+    @Override
+    public ResponseHandler createTicketListResponseHandler(Services services) {
+        return new TicketListResponseHandler(services);
+    }
     
 }

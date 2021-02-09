@@ -1,4 +1,3 @@
-
 package com.cabanaban.desklo.ui.desktop;
 
 import com.cabanaban.desklo.Services;
@@ -10,12 +9,11 @@ public class NotFoundResponseHandler extends AbstractResponseHandler {
     public NotFoundResponseHandler(Services services) {
         super(services);
     }
-    
-    
+
     @Override
     public void handle(Object response) {
         ResponseViewModel responseViewModel = (ResponseViewModel) response;
-        MainJFrame mainFrame =  MainJFrame.getInstance();
+        MainUI mainFrame = MainUI.getInstance();
         JOptionPane.showMessageDialog(
                 mainFrame,
                 responseViewModel.response,
@@ -23,5 +21,5 @@ public class NotFoundResponseHandler extends AbstractResponseHandler {
                 JOptionPane.ERROR_MESSAGE
         );
     }
-    
+
 }
