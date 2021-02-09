@@ -1,11 +1,11 @@
 package com.cabanaban.desklo.controller;
 
-import com.cabanaban.desklo.domain.Support;
 import com.cabanaban.desklo.repository.UserRepository;
 import com.cabanaban.desklo.repository.TicketRepository;
 import com.cabanaban.desklo.viewmodel.Presenter;
 import com.cabanaban.desklo.Services;
 import com.cabanaban.common.Command;
+import com.cabanaban.desklo.domain.DefaultSupportManager;
 
 public class Controller implements ActionDispatcher, Services {
 
@@ -13,7 +13,7 @@ public class Controller implements ActionDispatcher, Services {
 
     private TicketRepository ticketRepository;
 
-    private Support support;
+    private DefaultSupportManager defaultSupportManager;
 
     private Presenter presenter;
 
@@ -57,10 +57,6 @@ public class Controller implements ActionDispatcher, Services {
         return ticketRepository;
     }
 
-    @Override
-    public Support getDefaultSupport() {
-        return support;
-    }
 
     @Override
     public Presenter getPresenter() {
@@ -70,6 +66,11 @@ public class Controller implements ActionDispatcher, Services {
     @Override
     public ActionDispatcher getDispatcher() {
         return this;
+    }
+
+    @Override
+    public DefaultSupportManager getDefaultSupportManager() {
+        return defaultSupportManager;
     }
 
 }

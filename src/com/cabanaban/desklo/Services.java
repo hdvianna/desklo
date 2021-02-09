@@ -2,9 +2,9 @@ package com.cabanaban.desklo;
 
 import com.cabanaban.desklo.repository.UserRepository;
 import com.cabanaban.desklo.repository.TicketRepository;
-import com.cabanaban.desklo.domain.Support;
 import com.cabanaban.desklo.viewmodel.Presenter;
 import com.cabanaban.desklo.controller.ActionDispatcher;
+import com.cabanaban.desklo.domain.DefaultSupportManager;
 
 public interface Services {
 
@@ -12,7 +12,7 @@ public interface Services {
 
     public abstract TicketRepository getTicketRepository();
 
-    public abstract Support getDefaultSupport();
+    public abstract DefaultSupportManager getDefaultSupportManager();
 
     public abstract Presenter getPresenter();
 

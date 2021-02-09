@@ -24,7 +24,7 @@ public class DefaultPresenter implements Presenter {
             userMenu = new MenuViewModel();
             userMenu.description = "Usuário";
             userMenu.action = Action.NOP;
-            userMenu.subItems = new MenuViewModel[2];
+            userMenu.subItems = new MenuViewModel[3];
             userMenu.subItems[0] = new MenuViewModel();
             userMenu.subItems[0].action = Action.SHOW_OPEN_TICKET;
             userMenu.subItems[0].description = "Abrir ticket";
@@ -33,6 +33,10 @@ public class DefaultPresenter implements Presenter {
             userMenu.subItems[1].action = Action.SHOW_OWN_TICKETS;
             userMenu.subItems[1].description = "Ver meus tickets";
             userMenu.subItems[1].subItems = new MenuViewModel[0];
+            userMenu.subItems[2] = new MenuViewModel();
+            userMenu.subItems[2].action = Action.SHOW_SELECT_USER;
+            userMenu.subItems[2].description = "Selecionar usuário";
+            userMenu.subItems[2].subItems = new MenuViewModel[0];
         }
         return userMenu;
     }
