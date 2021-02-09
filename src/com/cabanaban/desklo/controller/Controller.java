@@ -23,7 +23,8 @@ public class Controller implements ActionDispatcher, Services {
         this.commandFactory = commandFactory;
     }
 
-    public void dispatch(Action action, Object request) {
+    @Override
+    public void dispatch(Services services, Action action, Object request) {
         //SLADashBoardJFrame frame = new SLADashBoardJFrame();
         //desktop.add(frame);
         //frame.setVisible(true);
@@ -31,12 +32,12 @@ public class Controller implements ActionDispatcher, Services {
             switch (action) {
                 case SHOW_MAIN -> {
                     Command command;
-                    command = commandFactory.createMainAction(this, request);
+                    command = commandFactory.createMainAction(services, request);
                     command.execute();
                 }
                 default -> {
                     Command command;
-                    command = commandFactory.createNotImplementedAction(this, request);
+                    command = commandFactory.createNotImplementedAction(services, request);
                     command.execute();
                 }
             }

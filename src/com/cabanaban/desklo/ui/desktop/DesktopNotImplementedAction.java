@@ -6,7 +6,7 @@ import com.cabanaban.desklo.Services;
 
 public class DesktopNotImplementedAction extends AbstractDesktopAction {
     
-    private JFrame frame;
+    private final JFrame frame;
     
     public DesktopNotImplementedAction(Services services, Object request, JFrame frame) {
         super(services, request);

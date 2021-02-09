@@ -1,6 +1,8 @@
 
 package com.cabanaban.desklo.controller;
 
+import com.cabanaban.desklo.Services;
+
 public interface ActionDispatcher {
-    public void dispatch(Action action, Object request);
+    public void dispatch(Services services, Action action, Object request);
 }

@@ -7,6 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JComponent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.cabanaban.desklo.Services;
 import com.cabanaban.desklo.controller.ActionDispatcher;
 import com.cabanaban.desklo.viewmodel.MainViewModel;
 import com.cabanaban.desklo.viewmodel.MenuViewModel;
@@ -24,14 +25,14 @@ public class MainJFrame extends javax.swing.JFrame {
     private JDesktopPane desktop;
     private JMenuBar menuBar;
     private final MainViewModel mainViewModel;
-    private ActionDispatcher dispatcher;
+    private Services services;
     private static MainJFrame instance = null; 
     
 
-    private MainJFrame(ActionDispatcher dispatcher, MainViewModel mainViewModel) {
+    private MainJFrame(Services services, MainViewModel mainViewModel) {
         super(mainViewModel.title);
         this.mainViewModel = mainViewModel;
-        this.dispatcher = dispatcher;
+        this.services = services;
         init();
     }
 
@@ -75,7 +76,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 menuItem = new JMenuItem(menuViewModel.description);
                 menuItem.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        dispatcher.dispatch(menuViewModel.action, null);
+                        services.getDispatcher().dispatch(services, menuViewModel.action, null);
                     }
                 });
             }            
@@ -84,9 +85,9 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }
     
-    public static MainJFrame getInstance(ActionDispatcher dispatcher, MainViewModel mainViewModel) {
+    public static MainJFrame getInstance(Services services, MainViewModel mainViewModel) {
         if (MainJFrame.instance == null) {
-            MainJFrame.instance = new MainJFrame(dispatcher, mainViewModel);
+            MainJFrame.instance = new MainJFrame(services, mainViewModel);
         }
         return MainJFrame.instance;
     }

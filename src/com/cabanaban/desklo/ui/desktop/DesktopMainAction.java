@@ -17,7 +17,7 @@ public class DesktopMainAction extends AbstractDesktopAction {
     public void execute() {
         MainViewModel mainViewModel = (MainViewModel) request;
         if (mainFrame == null) {
-            MainJFrame mainFrame =  MainJFrame.getInstance(services.getDispatcher(), mainViewModel);
+            MainJFrame mainFrame =  MainJFrame.getInstance(services, mainViewModel);
             main = new JFrameUIComponent(mainFrame);
             main.display();
         }
