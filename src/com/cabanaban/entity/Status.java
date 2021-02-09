@@ -1,4 +1,4 @@
-package com.cabanaban.desklo.domain;
+package com.cabanaban.entity;
 
 public enum Status {
 

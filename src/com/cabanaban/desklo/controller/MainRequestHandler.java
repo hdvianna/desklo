@@ -13,7 +13,7 @@ public class MainRequestHandler extends AbstractRequestHandler {
     @Override
     public void handle(Object request, ResponseHandler responseHandler) {
         MainViewModel viewModel = services.getPresenter().getMainViewModelInstance();
-        responseHandler.handle(viewModel);        
+        responseHandler.handle(viewModel);
     }
     
 }

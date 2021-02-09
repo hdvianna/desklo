@@ -1,4 +1,4 @@
-package com.cabanaban.desklo.domain;
+package com.cabanaban.entity;
 
 import com.cabanaban.entity.NationalID;
 import com.cabanaban.entity.Phone;
@@ -63,10 +63,6 @@ public class User {
     public final void setSla(int sla) {
         this.sla = sla;
     }
-    
-    public Ticket createSupportTicket(String problem) {
-        return new Ticket(this, problem);
-    }    
     
 
 }

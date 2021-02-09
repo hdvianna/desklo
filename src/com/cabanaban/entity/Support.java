@@ -1,4 +1,4 @@
-package com.cabanaban.desklo.domain;
+package com.cabanaban.entity;
 
 import com.cabanaban.entity.EMail;
 import com.cabanaban.entity.NationalID;
@@ -22,19 +22,15 @@ public class Support extends User {
     }
 
     public void attendTicket(Ticket ticket) {
-        ticket.setSupport(this);
-        ticket.setStatus(Status.DOING);
+        ticket.attend(this);
     }
 
     public void transferTicket(Ticket ticket, int serviceTime, Support support) {
-        ticket.addServiceTime(serviceTime);
-        ticket.setSupport(support);
+        ticket.transfer(support, serviceTime);
     }
 
     public void closeTicket(Ticket ticket, int serviceTime, String solution) {
-        ticket.addServiceTime(serviceTime);
-        ticket.setStatus(Status.DONE);
-        ticket.setSolution(solution);
+        ticket.close(serviceTime, solution);
     }
 
 }

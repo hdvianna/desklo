@@ -4,24 +4,32 @@ import com.cabanaban.desklo.repository.UserRepository;
 import com.cabanaban.desklo.repository.TicketRepository;
 import com.cabanaban.desklo.viewmodel.Presenter;
 import com.cabanaban.desklo.Services;
-import com.cabanaban.desklo.domain.DefaultSupportManager;
+import com.cabanaban.desklo.domain.CurrentUserManager;
+import com.cabanaban.desklo.domain.UsersManager;
+import com.cabanaban.desklo.domain.TicketsManager;
 
 public class Controller implements ActionDispatcher, Services {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private TicketRepository ticketRepository;
+    private final TicketRepository ticketRepository;
 
-    private DefaultSupportManager defaultSupportManager;
-
-    private Presenter presenter;
+    private final CurrentUserManager currentUserManager;
     
-    private ResponseHandlerFactory responseHandlerFactory;
+    private final UsersManager usersManager;
+    
+    private final TicketsManager ticketsManager;
 
-    public Controller(UserRepository userRepository, TicketRepository ticketRepository, DefaultSupportManager defaultSupportManager, Presenter presenter, ResponseHandlerFactory responseHandlerFactory) {
+    private final Presenter presenter;
+    
+    private final ResponseHandlerFactory responseHandlerFactory;
+
+    public Controller(UserRepository userRepository, TicketRepository ticketRepository, CurrentUserManager currentUserManager, UsersManager usersManager, TicketsManager ticketsManager, Presenter presenter, ResponseHandlerFactory responseHandlerFactory) {
         this.userRepository = userRepository;
         this.ticketRepository = ticketRepository;
-        this.defaultSupportManager = defaultSupportManager;
+        this.currentUserManager = currentUserManager;
+        this.usersManager = usersManager;
+        this.ticketsManager = ticketsManager;
         this.presenter = presenter;
         this.responseHandlerFactory = responseHandlerFactory;
     }
@@ -71,13 +79,23 @@ public class Controller implements ActionDispatcher, Services {
     }
 
     @Override
-    public DefaultSupportManager getDefaultSupportManager() {
-        return defaultSupportManager;
+    public CurrentUserManager getCurrentUserManager() {
+        return currentUserManager;
     }
 
     @Override
     public ResponseHandlerFactory getResponseHandlerFactory() {
         return responseHandlerFactory;
+    }
+
+    @Override
+    public UsersManager getUsersManager() {
+        return usersManager;
+    }
+
+    @Override
+    public TicketsManager getTicketsManager() {
+        return ticketsManager;
     }
 
 }

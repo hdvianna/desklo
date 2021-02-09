@@ -1,7 +1,7 @@
 package com.cabanaban.desklo.repository;
 
-import com.cabanaban.desklo.domain.User;
-import com.cabanaban.desklo.domain.Support;
+import com.cabanaban.entity.User;
+import com.cabanaban.entity.Support;
 import java.util.List;
 
 public interface UserRepository {

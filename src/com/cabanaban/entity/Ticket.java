@@ -1,4 +1,4 @@
-package com.cabanaban.desklo.domain;
+package com.cabanaban.entity;
 
 import java.util.Date;
 
@@ -29,10 +29,26 @@ public class Ticket {
         this.status = Status.TODO;
     }
     
-     public boolean isLate() {
+    public boolean isLate() {
         Date now = new Date();
         long totalTime = now.getTime() - openingDate.getTime();
         return totalTime >  (user.getSla() * 60 * 60 * 1000);
+    }
+    
+    public void attend(Support support) {
+        setSupport(support);
+        setStatus(Status.DOING);
+    }
+    
+    public void close(int serviceTime, String solution) {
+        addServiceTime(serviceTime);
+        setStatus(Status.DONE);
+        setSolution(solution);
+    }
+    
+    public void transfer(Support support, int serviceTime) {
+        addServiceTime(serviceTime);
+        setSupport(support);
     }
 
     public void addServiceTime(int serviceTime) {

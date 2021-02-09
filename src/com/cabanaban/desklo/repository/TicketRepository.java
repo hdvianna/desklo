@@ -1,9 +1,9 @@
 package com.cabanaban.desklo.repository;
 
 
-import com.cabanaban.desklo.domain.User;
-import com.cabanaban.desklo.domain.Ticket;
-import com.cabanaban.desklo.domain.Status;
+import com.cabanaban.entity.User;
+import com.cabanaban.entity.Ticket;
+import com.cabanaban.entity.Status;
 import java.util.List;
 
 public interface TicketRepository {

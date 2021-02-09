@@ -1,7 +1,7 @@
 package com.cabanaban.desklo.repository;
 
-import com.cabanaban.desklo.domain.Support;
-import com.cabanaban.desklo.domain.User;
+import com.cabanaban.entity.Support;
+import com.cabanaban.entity.User;
 import java.util.List;
 import java.util.stream.Collectors;
 
