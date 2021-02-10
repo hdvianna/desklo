@@ -38,27 +38,62 @@ public class TicketManagerUIComponent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        affectedUserLabel = new javax.swing.JLabel();
+        iaffectedUserLabel = new javax.swing.JLabel();
         textArealScrollPane = new javax.swing.JScrollPane();
         problemTextArea = new javax.swing.JTextArea();
         supporterLabel = new javax.swing.JLabel();
         elapsedTimeLabel = new javax.swing.JLabel();
-        manageButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        attendButton = new javax.swing.JButton();
+        transferButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        affectedUserLabel.setText("affectedUserLabel");
+        iaffectedUserLabel.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        iaffectedUserLabel.setText("affectedUserLabel");
 
+        problemTextArea.setEditable(false);
+        problemTextArea.setBackground(new java.awt.Color(245, 246, 247));
         problemTextArea.setColumns(20);
         problemTextArea.setRows(5);
         problemTextArea.setText("problemTextArea");
+        problemTextArea.setBorder(null);
         textArealScrollPane.setViewportView(problemTextArea);
 
+        supporterLabel.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         supporterLabel.setText("supporterLabel");
 
+        elapsedTimeLabel.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         elapsedTimeLabel.setText("elapsedTimeLabel");
 
-        manageButton.setText("manageButton");
+        attendButton.setText("attendButton");
+
+        transferButton.setText("transferButton");
+
+        closeButton.setText("closeButton");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(attendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transferButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(closeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(attendButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(transferButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(closeButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,58 +101,84 @@ public class TicketManagerUIComponent extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(affectedUserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iaffectedUserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(supporterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(elapsedTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textArealScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageButton)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textArealScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(affectedUserLabel)
-                        .addComponent(elapsedTimeLabel)
-                        .addComponent(supporterLabel))
-                    .addComponent(manageButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(iaffectedUserLabel)
+                            .addComponent(elapsedTimeLabel)
+                            .addComponent(supporterLabel))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textArealScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 12, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel affectedUserLabel;
+    private javax.swing.JButton attendButton;
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel elapsedTimeLabel;
-    private javax.swing.JButton manageButton;
+    private javax.swing.JLabel iaffectedUserLabel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextArea problemTextArea;
     private javax.swing.JLabel supporterLabel;
     private javax.swing.JScrollPane textArealScrollPane;
+    private javax.swing.JButton transferButton;
     // End of variables declaration//GEN-END:variables
     public void refreshData(TicketListItemViewModel ticketListItemViewModel) {
-        affectedUserLabel.setText(ticketListItemViewModel.affectUserName);
+        iaffectedUserLabel.setText(ticketListItemViewModel.affectUserName);
         elapsedTimeLabel.setText(ticketListItemViewModel.elapsedTimeInHours);
         
         Color color = Color.decode(ticketListItemViewModel.elapsedTimeLabelColor);
         elapsedTimeLabel.setForeground(color);
         
-        manageButton.setText(ticketListItemViewModel.actionText);
+        attendButton.setText(ticketListItemViewModel.attendActionText);
+        transferButton.setText(ticketListItemViewModel.transferActionText);
+        closeButton.setText(ticketListItemViewModel.closeActionText);
         problemTextArea.setText(ticketListItemViewModel.problemDescription);
         supporterLabel.setText(ticketListItemViewModel.supporterName);
         ticketID = ticketListItemViewModel.ticketID;
-        if (manageButton.getActionListeners().length == 0) {
-            manageButton.addActionListener(new ActionListener() {
+        
+        if (attendButton.getActionListeners().length == 0) {
+            attendButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     HashMap<String,String> request = new HashMap<String,String>();
                     request.put("ticketID", ticketID);
-                    services.getDispatcher().dispatch(services, ticketListItemViewModel.action, request);
+                    services.getDispatcher().dispatch(services, ticketListItemViewModel.attendAction, request);
+                }
+            });
+            
+            transferButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    HashMap<String,String> request = new HashMap<String,String>();
+                    request.put("ticketID", ticketID);
+                    services.getDispatcher().dispatch(services, ticketListItemViewModel.transferAction, request);
+                }
+            });
+                        
+            closeButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    HashMap<String,String> request = new HashMap<String,String>();
+                    request.put("ticketID", ticketID);
+                    services.getDispatcher().dispatch(services, ticketListItemViewModel.closeAction, request);
                 }
             });
         }

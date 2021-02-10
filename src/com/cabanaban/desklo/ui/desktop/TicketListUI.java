@@ -86,8 +86,8 @@ public class TicketListUI extends javax.swing.JInternalFrame {
                 .addComponent(elapsedTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(problemLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(actionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(243, 243, 243)
+                .addComponent(actionLabel)
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,11 +109,11 @@ public class TicketListUI extends javax.swing.JInternalFrame {
         scrollViewPort.setLayout(scrollViewPortLayout);
         scrollViewPortLayout.setHorizontalGroup(
             scrollViewPortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 985, Short.MAX_VALUE)
+            .addGap(0, 1167, Short.MAX_VALUE)
         );
         scrollViewPortLayout.setVerticalGroup(
             scrollViewPortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 529, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(scrollViewPort);
@@ -122,9 +122,9 @@ public class TicketListUI extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jSeparator1)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +133,7 @@ public class TicketListUI extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,7 +168,7 @@ public class TicketListUI extends javax.swing.JInternalFrame {
         for (TicketListItemViewModel ticketListItemViewModel : ticketListItemsViewModel) {
             TicketManagerUIComponent ticketManagerUIComponent = new TicketManagerUIComponent(services);
             ticketManagerUIComponent.refreshData(ticketListItemViewModel);
-            ticketManagerUIComponent.setMaximumSize(new Dimension(1230, 120));
+            ticketManagerUIComponent.setMaximumSize(new Dimension(5000, 150));
             scrollViewPort.add(ticketManagerUIComponent);            
         }
 

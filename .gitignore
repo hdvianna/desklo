@@ -2,3 +2,5 @@
 desklo-uml.asta.lock
 /build/
 /dist/
+.idea/
+desklo.iml

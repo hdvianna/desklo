@@ -17,10 +17,26 @@ import com.cabanaban.desklo.viewmodel.DefaultPresenter;
 import com.cabanaban.desklo.ui.desktop.DesktopResponseHandlerFactory;
 import com.cabanaban.desklo.controller.Controller;
 import com.cabanaban.desklo.controller.Action;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class DeskloDesktop {
 
     public static void main(String[] args) {
+        
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeskloDesktop.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(DeskloDesktop.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(DeskloDesktop.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(DeskloDesktop.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         User user1 = new User("Arthur Nudge", new NationalID("11111111111"), new Phone("991919191"), new EMail("arthur.nudge@example.com"), 24);
         User user2 = new User("Ron Obvious", new NationalID("22222222222"), new Phone("992929292"), new EMail("robvious@example.com"), 24);

@@ -10,6 +10,10 @@ public class TicketListItemViewModel {
     public String elapsedTimeInHours;
     public String elapsedTimeLabelColor;
     public String problemDescription;
-    public String actionText;
-    public Action action = Action.SHOW_MANAGE_TICKET;
+    public String attendActionText;
+    public String transferActionText;
+    public String closeActionText;
+    public Action attendAction = Action.ATTEND_TICKET;
+    public Action transferAction = Action.TRANSFER_TICKET;
+    public Action closeAction = Action.CLOSE_TICKET;
 }

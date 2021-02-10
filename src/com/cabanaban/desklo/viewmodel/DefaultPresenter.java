@@ -94,7 +94,9 @@ public class DefaultPresenter implements Presenter {
     @Override
     public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket) {
         TicketListItemViewModel ticketListItemViewModel =  new TicketListItemViewModel();
-        ticketListItemViewModel.actionText = "Gerenciar";
+        ticketListItemViewModel.attendActionText = "Atender";
+        ticketListItemViewModel.transferActionText = "Transferir";
+        ticketListItemViewModel.closeActionText = "Fechar";
         ticketListItemViewModel.affectUserName = ticket.getUser().getName();
         ticketListItemViewModel.elapsedTimeInHours = Long.toString(ticket.getCurrentServiceTimeInHours()) + " horas";
         ticketListItemViewModel.elapsedTimeLabelColor = "#000000";
