@@ -16,4 +16,7 @@ public class TicketListItemViewModel {
     public Action attendAction = Action.ATTEND_TICKET;
     public Action transferAction = Action.TRANSFER_TICKET;
     public Action closeAction = Action.CLOSE_TICKET;
+    public boolean attendActionEnabled;
+    public boolean closeActionEnabled;
+    public boolean transferActionEnabled;
 }

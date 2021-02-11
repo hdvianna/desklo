@@ -102,7 +102,7 @@ public class MainUI extends javax.swing.JFrame {
     }
     
     public void showTicketListUI(TicketListViewModel ticketListViewModel) {
-        ticketListUI.refreshData(ticketListViewModel);
+        ticketListUI.update(ticketListViewModel);
         ticketListUI.setVisible(true);
     } 
     

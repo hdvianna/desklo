@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cabanaban.desklo.ui.desktop;
 
 import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
 import com.cabanaban.desklo.Services;
+import com.cabanaban.desklo.ui.TicketListeItemViewModelObserver;
 import java.util.HashMap;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -16,7 +12,7 @@ import java.awt.Color;
  *
  * @author henrique
  */
-public class TicketManagerUIComponent extends javax.swing.JPanel {
+public class TicketManagerUIComponent extends javax.swing.JPanel implements TicketListeItemViewModelObserver {
     
     private String ticketID;
     private Services services;
@@ -143,7 +139,7 @@ public class TicketManagerUIComponent extends javax.swing.JPanel {
     private javax.swing.JScrollPane textArealScrollPane;
     private javax.swing.JButton transferButton;
     // End of variables declaration//GEN-END:variables
-    public void refreshData(TicketListItemViewModel ticketListItemViewModel) {
+    public void update(TicketListItemViewModel ticketListItemViewModel) {
         iaffectedUserLabel.setText(ticketListItemViewModel.affectUserName);
         elapsedTimeLabel.setText(ticketListItemViewModel.elapsedTimeInHours);
         
@@ -151,8 +147,11 @@ public class TicketManagerUIComponent extends javax.swing.JPanel {
         elapsedTimeLabel.setForeground(color);
         
         attendButton.setText(ticketListItemViewModel.attendActionText);
+        attendButton.setEnabled(ticketListItemViewModel.attendActionEnabled);
         transferButton.setText(ticketListItemViewModel.transferActionText);
+        transferButton.setEnabled(ticketListItemViewModel.transferActionEnabled);
         closeButton.setText(ticketListItemViewModel.closeActionText);
+        closeButton.setEnabled(ticketListItemViewModel.closeActionEnabled);
         problemTextArea.setText(ticketListItemViewModel.problemDescription);
         supporterLabel.setText(ticketListItemViewModel.supporterName);
         ticketID = ticketListItemViewModel.ticketID;

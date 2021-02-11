@@ -108,6 +108,10 @@ public class DefaultPresenter implements Presenter {
             ticketListItemViewModel.supporterName = ticket.getSupport().getName();
         }        
         ticketListItemViewModel.ticketID = ticket.getID();
+        ticketListItemViewModel.attendActionEnabled = ticket.canBeAttended();
+        ticketListItemViewModel.closeActionEnabled = ticket.canBeClosed();
+        ticketListItemViewModel.transferActionEnabled = ticket.canBeTransfered();
+        ticketListItemViewModel.attendActionEnabled = ticket.canBeAttended();
         return ticketListItemViewModel;
     }
 

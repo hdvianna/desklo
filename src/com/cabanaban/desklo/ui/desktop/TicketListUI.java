@@ -7,6 +7,7 @@ package com.cabanaban.desklo.ui.desktop;
 
 import com.cabanaban.desklo.viewmodel.TicketListViewModel;
 import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
+import com.cabanaban.desklo.ui.TicketListViewModelObserver;
 import com.cabanaban.desklo.Services;
 import java.awt.Dimension;
 import java.util.List;
@@ -17,7 +18,7 @@ import javax.swing.BoxLayout;
  *
  * @author henrique
  */
-public class TicketListUI extends javax.swing.JInternalFrame {
+public class TicketListUI extends javax.swing.JInternalFrame implements TicketListViewModelObserver {
 
     private final Services services;
 
@@ -152,7 +153,7 @@ public class TicketListUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel supporterLabel;
     // End of variables declaration//GEN-END:variables
 
-    public void refreshData(TicketListViewModel ticketListViewModel) {
+    public void update(TicketListViewModel ticketListViewModel) {
         actionLabel.setText(ticketListViewModel.actionHeaderLabel);
         affectedUserLabel.setText(ticketListViewModel.affectUserHeaderLabel);
         elapsedTimeLabel.setText(ticketListViewModel.elapsedTimeHeaderLabel);
@@ -167,7 +168,7 @@ public class TicketListUI extends javax.swing.JInternalFrame {
         scrollViewPort.setLayout(new BoxLayout(scrollViewPort, BoxLayout.Y_AXIS));
         for (TicketListItemViewModel ticketListItemViewModel : ticketListItemsViewModel) {
             TicketManagerUIComponent ticketManagerUIComponent = new TicketManagerUIComponent(services);
-            ticketManagerUIComponent.refreshData(ticketListItemViewModel);
+            ticketManagerUIComponent.update(ticketListItemViewModel);
             ticketManagerUIComponent.setMaximumSize(new Dimension(5000, 150));
             scrollViewPort.add(ticketManagerUIComponent);            
         }
