@@ -6,16 +6,15 @@ import javax.swing.JOptionPane;
 
 public class NotFoundResponseHandler extends AbstractResponseHandler {
 
-    public NotFoundResponseHandler(Services services) {
-        super(services);
+    public NotFoundResponseHandler(Services services, MainUI mainUI) {
+        super(services, mainUI);
     }
 
     @Override
     public void handle(Object response) {
         ResponseViewModel responseViewModel = (ResponseViewModel) response;
-        MainUI mainFrame = MainUI.getInstance();
         JOptionPane.showMessageDialog(
-                mainFrame,
+                mainUI,
                 responseViewModel.response,
                 Integer.toString(responseViewModel.status),
                 JOptionPane.ERROR_MESSAGE

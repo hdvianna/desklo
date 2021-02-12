@@ -6,14 +6,13 @@ import com.cabanaban.desklo.Services;
 
 public class ShowCloseTicketResponseHandler extends AbstractResponseHandler {
 
-    public ShowCloseTicketResponseHandler(Services services) {
-        super(services);
+    public ShowCloseTicketResponseHandler(Services services, MainUI mainUI) {
+        super(services, mainUI);
     }    
     
     @Override
     public void handle(Object response) {
-        MainUI mainFrame =  MainUI.getInstance();
-        mainFrame.showCloseTicketUI((CloseTicketViewModel) response);
+        mainUI.showCloseTicketUI((CloseTicketViewModel) response);
     }
     
 }

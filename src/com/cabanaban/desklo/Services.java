@@ -7,7 +7,6 @@ import com.cabanaban.desklo.controller.ActionDispatcher;
 import com.cabanaban.desklo.domain.CurrentUserManager;
 import com.cabanaban.desklo.domain.UsersManager;
 import com.cabanaban.desklo.domain.TicketsManager;
-import com.cabanaban.desklo.controller.ResponseHandlerFactory;
 
 public interface Services {
 
@@ -25,6 +24,5 @@ public interface Services {
 
     public ActionDispatcher getDispatcher();
     
-    public ResponseHandlerFactory getResponseHandlerFactory();
 
 }

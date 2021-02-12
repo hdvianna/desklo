@@ -15,6 +15,7 @@ import com.cabanaban.desklo.viewmodel.MenuViewModel;
 import com.cabanaban.desklo.viewmodel.TicketListViewModel;
 import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
 import com.cabanaban.desklo.viewmodel.CloseTicketViewModel;
+import com.cabanaban.desklo.ui.MainViewModelObserver;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -26,22 +27,21 @@ import java.awt.BorderLayout;
  * 
  * @author henrique
  */
-public class MainUI extends javax.swing.JFrame {
+public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver {
 
     private JDesktopPane desktop;
     private JMenuBar menuBar;
-    private final MainViewModel mainViewModel;
+    private MainViewModel mainViewModel;
     private Services services;
     private static MainUI instance = null;
     private TicketListUI ticketListUI;
     
 
-    private MainUI(Services services, MainViewModel mainViewModel) {
-        super(mainViewModel.title);
+    public MainUI(Services services) {
+        super("");
         this.mainViewModel = mainViewModel;
         this.services = services;
         init();
-        initInternalWindows();
     }
 
     private void init() {
@@ -74,8 +74,7 @@ public class MainUI extends javax.swing.JFrame {
     }
     
     private JMenuBar createMenuBar() {
-        menuBar = new JMenuBar();
-        appendMenuItems(menuBar, this.mainViewModel.menusViewModel, true);        
+        menuBar = new JMenuBar();       
         return menuBar;
     }
     
@@ -97,6 +96,12 @@ public class MainUI extends javax.swing.JFrame {
         }
     }
     
+    public void update(MainViewModel mainViewModel) {
+        this.mainViewModel = mainViewModel;
+        appendMenuItems(menuBar, this.mainViewModel.menusViewModel, true); 
+        initInternalWindows();
+    }
+    
     private void initInternalWindows() {
         ticketListUI = new TicketListUI(services);
         desktop.add(ticketListUI);
@@ -110,13 +115,13 @@ public class MainUI extends javax.swing.JFrame {
     public void showCloseTicketUI(CloseTicketViewModel closeTicketViewModel) {
         CloseTicketDialogUI closeTicketDialogUI = new CloseTicketDialogUI(this, true, services);
         closeTicketDialogUI.update(closeTicketViewModel);
-        closeTicketDialogUI.setLocationRelativeTo(null);
+        closeTicketDialogUI.setLocationRelativeTo(ticketListUI);
         closeTicketDialogUI.setVisible(true);
     }
     
     public static MainUI getInstance(Services services, MainViewModel mainViewModel) {
         if (MainUI.instance == null) {
-            MainUI.instance = new MainUI(services, mainViewModel);
+            MainUI.instance = new MainUI(services);
         }
         return MainUI.instance;
     }

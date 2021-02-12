@@ -5,14 +5,13 @@ import com.cabanaban.desklo.viewmodel.TicketListViewModel;
 
 public class TicketListResponseHandler extends AbstractResponseHandler {
 
-    public TicketListResponseHandler(Services services) {
-        super(services);
+    public TicketListResponseHandler(Services services, MainUI mainUI) {
+        super(services, mainUI);
     }
 
     @Override
     public void handle(Object response) {
-        MainUI mainFrame =  MainUI.getInstance();
-        mainFrame.showTicketListUI((TicketListViewModel) response);
+        mainUI.showTicketListUI((TicketListViewModel) response);
     }
     
 

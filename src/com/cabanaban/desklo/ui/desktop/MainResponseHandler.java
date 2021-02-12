@@ -8,15 +8,15 @@ import com.cabanaban.desklo.viewmodel.MainViewModel;
 public class MainResponseHandler extends AbstractResponseHandler {
 
     
-    public MainResponseHandler(Services services) {
-        super(services);
-    }    
-    
+    public MainResponseHandler(Services services, MainUI mainUI) {
+        super(services, mainUI);
+    }
+ 
     
     @Override
     public void handle(Object response) {
-        MainUI mainFrame =  MainUI.getInstance(services, (MainViewModel) response);
-        JFrameUIComponent main = new JFrameUIComponent(mainFrame);
+        mainUI.update((MainViewModel) response);
+        JFrameUIComponent main = new JFrameUIComponent(mainUI);
         main.display();
     }
     

@@ -5,8 +5,10 @@ import com.cabanaban.desklo.controller.ResponseHandler;
 
 abstract public class AbstractResponseHandler implements ResponseHandler {
     protected Services services;
-
-    public AbstractResponseHandler(Services services) {
+    protected MainUI mainUI;
+    
+    public AbstractResponseHandler(Services services, MainUI mainUI) {
         this.services = services;
+        this.mainUI = mainUI;
     }
 }

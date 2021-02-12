@@ -24,21 +24,18 @@ public class Controller implements ActionDispatcher, Services {
 
     private final Presenter presenter;
     
-    private final ResponseHandlerFactory responseHandlerFactory;
-    
     private final Map<Action, RequestHandler> requestHandlerMap;
     private final Map<Action, ResponseHandler> responseHandlerMap;
     private RequestHandler defaultRequestHandler = null;
     private ResponseHandler defaultResponseHandler = null;
 
-    public Controller(UserRepository userRepository, TicketRepository ticketRepository, CurrentUserManager currentUserManager, UsersManager usersManager, TicketsManager ticketsManager, Presenter presenter, ResponseHandlerFactory responseHandlerFactory) {
+    public Controller(UserRepository userRepository, TicketRepository ticketRepository, CurrentUserManager currentUserManager, UsersManager usersManager, TicketsManager ticketsManager, Presenter presenter) {
         this.userRepository = userRepository;
         this.ticketRepository = ticketRepository;
         this.currentUserManager = currentUserManager;
         this.usersManager = usersManager;
         this.ticketsManager = ticketsManager;
         this.presenter = presenter;
-        this.responseHandlerFactory = responseHandlerFactory;
         requestHandlerMap = new HashMap<>();
         responseHandlerMap = new HashMap<>();
     }
@@ -88,11 +85,6 @@ public class Controller implements ActionDispatcher, Services {
     @Override
     public CurrentUserManager getCurrentUserManager() {
         return currentUserManager;
-    }
-
-    @Override
-    public ResponseHandlerFactory getResponseHandlerFactory() {
-        return responseHandlerFactory;
     }
 
     @Override

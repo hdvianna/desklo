@@ -14,13 +14,17 @@ import com.cabanaban.desklo.domain.UsersManager;
 import com.cabanaban.desklo.domain.TicketsManager;
 import com.cabanaban.desklo.domain.CurrentUserManager;
 import com.cabanaban.desklo.viewmodel.DefaultPresenter;
-import com.cabanaban.desklo.ui.desktop.DesktopResponseHandlerFactory;
 import com.cabanaban.desklo.controller.Controller;
 import com.cabanaban.desklo.controller.Action;
 import com.cabanaban.desklo.controller.MainRequestHandler;
 import com.cabanaban.desklo.controller.TicketListRequestHandler;
 import com.cabanaban.desklo.controller.ShowCloseTicketRequestHandler;
 import com.cabanaban.desklo.controller.NotFoundRequestHandler;
+import com.cabanaban.desklo.ui.desktop.MainResponseHandler;
+import com.cabanaban.desklo.ui.desktop.TicketListResponseHandler;
+import com.cabanaban.desklo.ui.desktop.ShowCloseTicketResponseHandler;
+import com.cabanaban.desklo.ui.desktop.NotFoundResponseHandler;
+import com.cabanaban.desklo.ui.desktop.MainUI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -77,13 +81,13 @@ public class DeskloDesktop {
 
         CurrentUserManager currentUserManager = new CurrentUserManager(support1, ticketRespository, userRepository);
 
-        DefaultPresenter presenter = new DefaultPresenter();
-        DesktopResponseHandlerFactory responseHandlerFactory = new DesktopResponseHandlerFactory();
-        Controller controller = new Controller(userRepository, ticketRespository, currentUserManager, usersManager, ticketsManager, presenter, responseHandlerFactory);
-        controller.addAction(Action.SHOW_MAIN, new MainRequestHandler(controller), responseHandlerFactory.createMainResponseHandler(controller))
-                .addAction(Action.SHOW_MANAGE_TICKETS, new TicketListRequestHandler(controller), responseHandlerFactory.createTicketListResponseHandler(controller))
-                .addAction(Action.SHOW_CLOSE_TICKET, new ShowCloseTicketRequestHandler(controller), responseHandlerFactory.createShowCloseTicketResponseHandler(controller))
-                .defaultAction(new NotFoundRequestHandler(controller), responseHandlerFactory.createNotFoundResponseHandler(controller))
+        DefaultPresenter presenter = new DefaultPresenter();     
+        Controller controller = new Controller(userRepository, ticketRespository, currentUserManager, usersManager, ticketsManager, presenter);
+        MainUI mainUI = new MainUI(controller);
+        controller.addAction(Action.SHOW_MAIN, new MainRequestHandler(controller), new MainResponseHandler(controller, mainUI))
+                .addAction(Action.SHOW_MANAGE_TICKETS, new TicketListRequestHandler(controller), new TicketListResponseHandler(controller, mainUI))
+                .addAction(Action.SHOW_CLOSE_TICKET, new ShowCloseTicketRequestHandler(controller), new ShowCloseTicketResponseHandler(controller, mainUI))
+                .defaultAction(new NotFoundRequestHandler(controller), new NotFoundResponseHandler(controller, mainUI))
                 .dispatch(Action.SHOW_MAIN, null);
     }
 
