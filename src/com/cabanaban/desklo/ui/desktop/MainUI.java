@@ -88,7 +88,7 @@ public class MainUI extends javax.swing.JFrame {
                 menuItem = new JMenuItem(menuViewModel.description);
                 menuItem.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        services.getDispatcher().dispatch(services, menuViewModel.action, null);
+                        services.getDispatcher().dispatch(menuViewModel.action, null);
                     }
                 });
             }            
@@ -110,6 +110,7 @@ public class MainUI extends javax.swing.JFrame {
     public void showCloseTicketUI(CloseTicketViewModel closeTicketViewModel) {
         CloseTicketDialogUI closeTicketDialogUI = new CloseTicketDialogUI(this, true, services);
         closeTicketDialogUI.update(closeTicketViewModel);
+        closeTicketDialogUI.setLocationRelativeTo(null);
         closeTicketDialogUI.setVisible(true);
     }
     

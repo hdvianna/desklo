@@ -161,7 +161,7 @@ public class TicketManagerUIComponent extends javax.swing.JPanel implements Tick
                 public void actionPerformed(ActionEvent e) {
                     HashMap<String,String> request = new HashMap<String,String>();
                     request.put("ticketID", ticketID);
-                    services.getDispatcher().dispatch(services, ticketListItemViewModel.attendAction, request);
+                    services.getDispatcher().dispatch(ticketListItemViewModel.attendAction, request);
                 }
             });
             
@@ -169,7 +169,7 @@ public class TicketManagerUIComponent extends javax.swing.JPanel implements Tick
                 public void actionPerformed(ActionEvent e) {
                     HashMap<String,String> request = new HashMap<String,String>();
                     request.put("ticketID", ticketID);
-                    services.getDispatcher().dispatch(services, ticketListItemViewModel.transferAction, request);
+                    services.getDispatcher().dispatch(ticketListItemViewModel.transferAction, request);
                 }
             });
                         
@@ -177,7 +177,7 @@ public class TicketManagerUIComponent extends javax.swing.JPanel implements Tick
                 public void actionPerformed(ActionEvent e) {
                     HashMap<String,String> request = new HashMap<String,String>();
                     request.put("ticketID", ticketID);
-                    services.getDispatcher().dispatch(services, ticketListItemViewModel.closeAction, request);
+                    services.getDispatcher().dispatch(ticketListItemViewModel.closeAction, request);
                 }
             });
         }

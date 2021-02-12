@@ -7,6 +7,8 @@ import com.cabanaban.desklo.Services;
 import com.cabanaban.desklo.domain.CurrentUserManager;
 import com.cabanaban.desklo.domain.UsersManager;
 import com.cabanaban.desklo.domain.TicketsManager;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Controller implements ActionDispatcher, Services {
 
@@ -23,6 +25,11 @@ public class Controller implements ActionDispatcher, Services {
     private final Presenter presenter;
     
     private final ResponseHandlerFactory responseHandlerFactory;
+    
+    private final Map<Action, RequestHandler> requestHandlerMap;
+    private final Map<Action, ResponseHandler> responseHandlerMap;
+    private RequestHandler defaultRequestHandler = null;
+    private ResponseHandler defaultResponseHandler = null;
 
     public Controller(UserRepository userRepository, TicketRepository ticketRepository, CurrentUserManager currentUserManager, UsersManager usersManager, TicketsManager ticketsManager, Presenter presenter, ResponseHandlerFactory responseHandlerFactory) {
         this.userRepository = userRepository;
@@ -32,30 +39,25 @@ public class Controller implements ActionDispatcher, Services {
         this.ticketsManager = ticketsManager;
         this.presenter = presenter;
         this.responseHandlerFactory = responseHandlerFactory;
+        requestHandlerMap = new HashMap<>();
+        responseHandlerMap = new HashMap<>();
     }
     
     
     @Override
-    public void dispatch(Services services, Action action, Object request) {
+    public void dispatch(Action action, Object request) {
         try {
-            switch (action) {
-                case SHOW_MAIN -> {
-                    RequestHandler mainRequestHandler = new MainRequestHandler(services);
-                    mainRequestHandler.handle(request, responseHandlerFactory.createMainResponseHandler(services));
-                }
-                case SHOW_MANAGE_TICKETS -> {
-                    RequestHandler ticketListRequestHandler = new TicketListRequestHandler(services);
-                    ticketListRequestHandler.handle(request, responseHandlerFactory.createTicketListResponseHandler(services));
-                }
-                case SHOW_CLOSE_TICKET -> {
-                    RequestHandler showCloseTicketRequestHandler = new ShowCloseTicketRequestHandler(services);
-                    showCloseTicketRequestHandler.handle(request, responseHandlerFactory.createShowCloseTicketResponseHandler(services));
-                }
-                default -> {
-                    RequestHandler notFoundRequestHandler = new NotFoundRequestHandler(services);
-                    notFoundRequestHandler.handle(request, responseHandlerFactory.createNotFoundResponseHandler(services));
-                }
+            RequestHandler requestHandler = defaultRequestHandler;
+            if (requestHandlerMap.containsKey(action)) {
+                requestHandler = requestHandlerMap.get(action);
             }
+            
+            ResponseHandler responseHandler = defaultResponseHandler;
+            if (responseHandlerMap.containsKey(action)) {
+                responseHandler = responseHandlerMap.get(action);
+            }
+            
+            requestHandler.handle(request, responseHandler);
         } catch (Exception exception) {
             System.err.println(exception.getMessage());
         }
@@ -101,6 +103,20 @@ public class Controller implements ActionDispatcher, Services {
     @Override
     public TicketsManager getTicketsManager() {
         return ticketsManager;
+    }
+
+    @Override
+    public ActionDispatcher addAction(Action action, RequestHandler requestHandler, ResponseHandler responseHandler) {
+        requestHandlerMap.put(action, requestHandler);
+        responseHandlerMap.put(action, responseHandler);
+        return this;
+    }
+
+    @Override
+    public ActionDispatcher defaultAction(RequestHandler requestHandler, ResponseHandler responseHandler) {
+        defaultRequestHandler = requestHandler;
+        defaultResponseHandler = responseHandler;
+        return this;
     }
 
 }

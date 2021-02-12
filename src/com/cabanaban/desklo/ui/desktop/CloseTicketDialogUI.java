@@ -90,7 +90,7 @@ public class CloseTicketDialogUI extends javax.swing.JDialog implements CloseTic
                 public void actionPerformed(ActionEvent e) {
                     HashMap<String,String> request = new HashMap<String,String>();
                     request.put("ticketID", ticketID);
-                    services.getDispatcher().dispatch(services, closeTicketViewModel.okAction, request);
+                    services.getDispatcher().dispatch(closeTicketViewModel.okAction, request);
                 }
             });
             
@@ -98,7 +98,7 @@ public class CloseTicketDialogUI extends javax.swing.JDialog implements CloseTic
                 public void actionPerformed(ActionEvent e) {
                     HashMap<String,String> request = new HashMap<String,String>();
                     request.put("ticketID", ticketID);
-                    services.getDispatcher().dispatch(services, closeTicketViewModel.cancelAction, request);
+                    services.getDispatcher().dispatch(closeTicketViewModel.cancelAction, request);
                 }
             });
         }
