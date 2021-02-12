@@ -4,7 +4,6 @@ package com.cabanaban.desklo.controller;
 
 import com.cabanaban.desklo.Services;
 import com.cabanaban.entity.Ticket;
-import com.cabanaban.desklo.viewmodel.CloseTicketViewModel;
 import java.util.HashMap;
 
 
@@ -15,12 +14,11 @@ public class ShowCloseTicketRequestHandler extends AbstractRequestHandler {
     }
 
     @Override
-    public void handle(Object request, ResponseHandler responseHandler) {
+    public Object handle(Object request) {
         HashMap<String,String> requestData = (HashMap<String,String>) request;
         String ticketID = requestData.get("ticketID");
         Ticket ticket = services.getTicketsManager().getTicketByID(ticketID);
-        CloseTicketViewModel closeTicketViewModel = services.getPresenter().createCloseTicketViewModel(ticket);
-        responseHandler.handle(closeTicketViewModel);
+        return services.getPresenter().createCloseTicketViewModel(ticket);
     }
     
 }

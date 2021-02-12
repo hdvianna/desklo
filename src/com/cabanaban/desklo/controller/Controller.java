@@ -54,7 +54,8 @@ public class Controller implements ActionDispatcher, Services {
                 responseHandler = responseHandlerMap.get(action);
             }
             
-            requestHandler.handle(request, responseHandler);
+            Object response = requestHandler.handle(request);
+            responseHandler.handle(response);
         } catch (Exception exception) {
             System.err.println(exception.getMessage());
         }

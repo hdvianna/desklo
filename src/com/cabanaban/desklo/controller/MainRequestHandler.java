@@ -2,7 +2,6 @@
 package com.cabanaban.desklo.controller;
 
 import com.cabanaban.desklo.Services;
-import com.cabanaban.desklo.viewmodel.MainViewModel;
 
 public class MainRequestHandler extends AbstractRequestHandler {
 
@@ -11,9 +10,8 @@ public class MainRequestHandler extends AbstractRequestHandler {
     }    
     
     @Override
-    public void handle(Object request, ResponseHandler responseHandler) {
-        MainViewModel viewModel = services.getPresenter().getMainViewModelInstance();
-        responseHandler.handle(viewModel);
+    public Object handle(Object request) {
+        return services.getPresenter().getMainViewModelInstance();
     }
     
 }
