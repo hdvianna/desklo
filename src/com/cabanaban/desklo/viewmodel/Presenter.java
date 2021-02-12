@@ -11,5 +11,6 @@ public interface Presenter {
     public ResponseViewModel getNotFoundViewModelInstance();
     public TicketListViewModel createTicketListViewModel(List<Ticket> tickets);
     public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket);
+    public CloseTicketViewModel createCloseTicketViewModel(Ticket ticket);
     
 }

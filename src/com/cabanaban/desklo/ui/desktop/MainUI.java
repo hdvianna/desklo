@@ -14,6 +14,7 @@ import com.cabanaban.desklo.viewmodel.MainViewModel;
 import com.cabanaban.desklo.viewmodel.MenuViewModel;
 import com.cabanaban.desklo.viewmodel.TicketListViewModel;
 import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
+import com.cabanaban.desklo.viewmodel.CloseTicketViewModel;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -105,6 +106,12 @@ public class MainUI extends javax.swing.JFrame {
         ticketListUI.update(ticketListViewModel);
         ticketListUI.setVisible(true);
     } 
+    
+    public void showCloseTicketUI(CloseTicketViewModel closeTicketViewModel) {
+        CloseTicketDialogUI closeTicketDialogUI = new CloseTicketDialogUI(this, true, services);
+        closeTicketDialogUI.update(closeTicketViewModel);
+        closeTicketDialogUI.setVisible(true);
+    }
     
     public static MainUI getInstance(Services services, MainViewModel mainViewModel) {
         if (MainUI.instance == null) {

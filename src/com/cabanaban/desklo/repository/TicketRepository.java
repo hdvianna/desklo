@@ -8,11 +8,13 @@ import java.util.List;
 
 public interface TicketRepository {
 
-	public abstract List<Ticket> findTicketsByStatus(Status status);
+	public List<Ticket> findTicketsByStatus(Status status);
         
-        public abstract List<Ticket> findTicketsByStatusList(List<Status> statusList);
+        public List<Ticket> findTicketsByStatusList(List<Status> statusList);
 
-	public abstract List<Ticket> findTicketsByUser(User user);
+	public List<Ticket> findTicketsByUser(User user);
+        
+        public Ticket findTicketByID(String ID);
 
 	public abstract void saveTicket(Ticket ticket);
 

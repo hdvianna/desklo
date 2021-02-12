@@ -115,4 +115,16 @@ public class DefaultPresenter implements Presenter {
         return ticketListItemViewModel;
     }
 
+    @Override
+    public CloseTicketViewModel createCloseTicketViewModel(Ticket ticket) {
+        CloseTicketViewModel closeViewModel = new CloseTicketViewModel();
+        closeViewModel.okLabel = "Ok";
+        closeViewModel.cancelLabel = "Cancelar";
+        closeViewModel.durationLabel = "Tempo de atendimento";
+        closeViewModel.durationValue = "0";
+        closeViewModel.ticketID = ticket.getID();
+        closeViewModel.title = "Fechando ticket #" + ticket.getID();
+        return closeViewModel;
+    }
+
 }

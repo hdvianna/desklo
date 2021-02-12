@@ -26,5 +26,9 @@ public class TicketsManager {
         statusList.add(Status.DOING);        
         return ticketRepository.findTicketsByStatusList(statusList);
     }
+    
+    public Ticket getTicketByID(String ticketID) {
+        return ticketRepository.findTicketByID(ticketID);
+    }
             
 }

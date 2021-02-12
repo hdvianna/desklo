@@ -8,6 +8,7 @@ import com.cabanaban.entity.EMail;
 import com.cabanaban.entity.User;
 import com.cabanaban.entity.Support;
 import com.cabanaban.entity.Ticket;
+import com.cabanaban.entity.Status;
 import com.cabanaban.desklo.repository.FakeListUserRepository;
 import com.cabanaban.desklo.repository.FakeListTicketRepository;
 import com.cabanaban.desklo.domain.UsersManager;
@@ -57,8 +58,10 @@ public class DeskloDesktop {
         
         Ticket ticket1 = new Ticket(user1, "Nudge nudge.");
         Ticket ticket2 = new Ticket(user1, "Enciclopédias com páginas ausentes.");
-        Ticket ticket3 = new Ticket(user2, "Não consigo atravessar o canal da mancha.");
+        Ticket ticket3 = new Ticket(user2, "Não consigo atravessar o canal da mancha.");        
         Ticket ticket4 = new Ticket(user3, "Bombons sem crocância suficiente.");
+        Ticket ticket5 = new Ticket(user2, "Preciso de ajuda! Acho que quebrei meus dentes ao morder a catedral.");
+        ticket5.setStatus(Status.DOING);
         
         FakeListTicketRepository ticketRespository = new FakeListTicketRepository(new LinkedList<Ticket>());
         TicketsManager ticketsManager = new TicketsManager(ticketRespository);
@@ -67,6 +70,7 @@ public class DeskloDesktop {
         ticketsManager.saveTicket(ticket3);
         ticketsManager.saveTicket(ticket4);
         ticketsManager.saveTicket(ticket4);
+        ticketsManager.saveTicket(ticket5);
         
         CurrentUserManager currentUserManager = new CurrentUserManager(support1, ticketRespository, userRepository);
         

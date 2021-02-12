@@ -53,4 +53,14 @@ public class FakeListTicketRepository implements TicketRepository {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Ticket findTicketByID(String ID) {
+        for(Ticket ticket : tickets) {
+            if (ticket.getID().equals(ID)) {
+                return ticket;
+            }
+        }
+        return null;
+    }
+
 }

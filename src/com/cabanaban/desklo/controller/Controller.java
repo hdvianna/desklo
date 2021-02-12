@@ -47,6 +47,10 @@ public class Controller implements ActionDispatcher, Services {
                     RequestHandler ticketListRequestHandler = new TicketListRequestHandler(services);
                     ticketListRequestHandler.handle(request, responseHandlerFactory.createTicketListResponseHandler(services));
                 }
+                case SHOW_CLOSE_TICKET -> {
+                    RequestHandler showCloseTicketRequestHandler = new ShowCloseTicketRequestHandler(services);
+                    showCloseTicketRequestHandler.handle(request, responseHandlerFactory.createShowCloseTicketResponseHandler(services));
+                }
                 default -> {
                     RequestHandler notFoundRequestHandler = new NotFoundRequestHandler(services);
                     notFoundRequestHandler.handle(request, responseHandlerFactory.createNotFoundResponseHandler(services));

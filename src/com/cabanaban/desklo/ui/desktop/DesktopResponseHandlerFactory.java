@@ -21,5 +21,10 @@ public class DesktopResponseHandlerFactory implements ResponseHandlerFactory {
     public ResponseHandler createTicketListResponseHandler(Services services) {
         return new TicketListResponseHandler(services);
     }
+
+    @Override
+    public ResponseHandler createShowCloseTicketResponseHandler(Services services) {
+        return new ShowCloseTicketResponseHandler(services);
+    }
     
 }
