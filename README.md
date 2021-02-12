@@ -9,7 +9,7 @@ This project is managed with the Git version control system and developed with t
 
 First, download the git client at https://git-scm.com/
 
-Then, you can fork the Desklo project to your profile. To do this, go the address https://github.com/hdvianna/desklo and click on the fork button (see Figure 1). A popup will be opened asking "Where should we fork sample?". The select your profile.
+Then, you can fork the Desklo project to your profile. To do this, go the address https://github.com/hdvianna/desklo and click on the fork button (see Figure 1). A popup will be opened asking "Where should we fork sample?". Then select your profile.
 
 After installing the git and forking the repository you can open a terminal (or command prompt) to clone the repository using the following command `git clone https://github.com/<my-user-name>/desklo.git`, where my `<my-user-name>` is the name of your GitHub profile. For example, 
 
