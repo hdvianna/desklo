@@ -1,4 +1,4 @@
-package com.cabanaban.desklo.viewmodel;
+package com.cabanaban.desklo.presentation;
 
 import com.cabanaban.entity.Ticket;
 import java.util.List;

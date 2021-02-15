@@ -1,7 +1,7 @@
 package com.cabanaban.desklo.ui.desktop;
 
 import com.cabanaban.desklo.Services;
-import com.cabanaban.desklo.viewmodel.ResponseViewModel;
+import com.cabanaban.desklo.presentation.ResponseViewModel;
 import javax.swing.JOptionPane;
 
 public class NotFoundResponseHandler extends AbstractResponseHandler {

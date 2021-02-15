@@ -10,11 +10,11 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 import com.cabanaban.desklo.Services;
 import com.cabanaban.desklo.controller.ActionDispatcher;
-import com.cabanaban.desklo.viewmodel.MainViewModel;
-import com.cabanaban.desklo.viewmodel.MenuViewModel;
-import com.cabanaban.desklo.viewmodel.TicketListViewModel;
-import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
-import com.cabanaban.desklo.viewmodel.CloseTicketViewModel;
+import com.cabanaban.desklo.presentation.MainViewModel;
+import com.cabanaban.desklo.presentation.MenuViewModel;
+import com.cabanaban.desklo.presentation.TicketListViewModel;
+import com.cabanaban.desklo.presentation.TicketListItemViewModel;
+import com.cabanaban.desklo.presentation.CloseTicketViewModel;
 import com.cabanaban.desklo.ui.MainViewModelObserver;
 
 import javax.swing.JButton;
@@ -32,6 +32,7 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
     private JDesktopPane desktop;
     private JMenuBar menuBar;
     private MainViewModel mainViewModel;
+    private CloseTicketDialogUI closeTicketDialogUI;
     private Services services;
     private static MainUI instance = null;
     private TicketListUI ticketListUI;
@@ -99,6 +100,7 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
     public void update(MainViewModel mainViewModel) {
         this.mainViewModel = mainViewModel;
         appendMenuItems(menuBar, this.mainViewModel.menusViewModel, true); 
+        setTitle(mainViewModel.title);
         initInternalWindows();
     }
     
@@ -113,10 +115,21 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
     } 
     
     public void showCloseTicketUI(CloseTicketViewModel closeTicketViewModel) {
-        CloseTicketDialogUI closeTicketDialogUI = new CloseTicketDialogUI(this, true, services);
+        closeTicketDialogUI = new CloseTicketDialogUI(this, true, services);
         closeTicketDialogUI.update(closeTicketViewModel);
         closeTicketDialogUI.setLocationRelativeTo(ticketListUI);
         closeTicketDialogUI.setVisible(true);
+    }
+    
+    public void cancelCloseTicketUI() {
+        closeTicketDialogUI.dispose();
+        closeTicketDialogUI = null;
+    }
+    
+    public void confirmCloseTicketUI(TicketListViewModel ticketListViewModel) {
+        closeTicketDialogUI.dispose();
+        closeTicketDialogUI = null;
+        ticketListUI.update(ticketListViewModel);
     }
     
     public static MainUI getInstance(Services services, MainViewModel mainViewModel) {

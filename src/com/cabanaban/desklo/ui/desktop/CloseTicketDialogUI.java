@@ -2,23 +2,29 @@
 package com.cabanaban.desklo.ui.desktop;
 
 import com.cabanaban.desklo.ui.CloseTicketViewModelObserver;
-import com.cabanaban.desklo.viewmodel.CloseTicketViewModel;
+import com.cabanaban.desklo.presentation.CloseTicketViewModel;
 import com.cabanaban.desklo.Services;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
+import javax.swing.text.NumberFormatter;
+import java.text.DecimalFormat;
+import javax.swing.JTextField;
 
 
 public class CloseTicketDialogUI extends javax.swing.JDialog implements CloseTicketViewModelObserver {
     
     private String ticketID;
     private Services services;
+    private NumberFormatter numberFormatter;
     
     /** Creates new form CloseTicketDialogUI */
     public CloseTicketDialogUI(java.awt.Frame parent, boolean modal, Services services) {
         super(parent, modal);
-        initComponents();
         this.services = services;
+        numberFormatter = new NumberFormatter();
+        initComponents();
+        durationTextField.setHorizontalAlignment(JTextField.RIGHT);
     }
 
     /** This method is called from within the constructor to
@@ -31,7 +37,7 @@ public class CloseTicketDialogUI extends javax.swing.JDialog implements CloseTic
     private void initComponents() {
 
         durationLabel = new javax.swing.JLabel();
-        durationTextField = new javax.swing.JFormattedTextField();
+        durationTextField = new javax.swing.JFormattedTextField(numberFormatter);
         buttonOk = new javax.swing.JButton();
         buttonCancel = new javax.swing.JButton();
 
@@ -85,11 +91,15 @@ public class CloseTicketDialogUI extends javax.swing.JDialog implements CloseTic
         durationTextField.setText(closeTicketViewModel.durationValue);
         buttonOk.setText(closeTicketViewModel.okLabel);
         buttonCancel.setText(closeTicketViewModel.cancelLabel);
+        DecimalFormat format = new DecimalFormat();
+        format.applyPattern("#");
+        numberFormatter.setFormat(format);
         if (buttonOk.getActionListeners().length == 0) {
             buttonOk.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     HashMap<String,String> request = new HashMap<String,String>();
                     request.put("ticketID", ticketID);
+                    request.put("serviceTime", Long.toString((Long) durationTextField.getValue()));
                     services.getDispatcher().dispatch(closeTicketViewModel.okAction, request);
                 }
             });

@@ -2,7 +2,7 @@
 package com.cabanaban.desklo.ui.desktop;
 
 import com.cabanaban.desklo.Services;
-import com.cabanaban.desklo.viewmodel.MainViewModel;
+import com.cabanaban.desklo.presentation.MainViewModel;
 
 
 public class MainResponseHandler extends AbstractResponseHandler {

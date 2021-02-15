@@ -1,6 +1,6 @@
 package com.cabanaban.desklo.ui.desktop;
 
-import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
+import com.cabanaban.desklo.presentation.TicketListItemViewModel;
 import com.cabanaban.desklo.Services;
 import com.cabanaban.desklo.ui.TicketListeItemViewModelObserver;
 import java.util.HashMap;

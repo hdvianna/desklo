@@ -2,7 +2,7 @@ package com.cabanaban.desklo.controller;
 
 import com.cabanaban.desklo.repository.UserRepository;
 import com.cabanaban.desklo.repository.TicketRepository;
-import com.cabanaban.desklo.viewmodel.Presenter;
+import com.cabanaban.desklo.presentation.Presenter;
 import com.cabanaban.desklo.Services;
 import com.cabanaban.desklo.domain.CurrentUserManager;
 import com.cabanaban.desklo.domain.UsersManager;

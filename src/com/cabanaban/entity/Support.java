@@ -30,6 +30,7 @@ public class Support extends User {
     }
 
     public void closeTicket(Ticket ticket, int serviceTime, String solution) {
+        ticket.setSupport(this);
         ticket.close(serviceTime, solution);
     }
 

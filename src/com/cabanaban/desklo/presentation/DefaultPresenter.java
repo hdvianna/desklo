@@ -1,4 +1,4 @@
-package com.cabanaban.desklo.viewmodel;
+package com.cabanaban.desklo.presentation;
 
 import com.cabanaban.desklo.controller.Action;
 import com.cabanaban.entity.Ticket;

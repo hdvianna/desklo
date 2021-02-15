@@ -5,8 +5,8 @@
  */
 package com.cabanaban.desklo.ui.desktop;
 
-import com.cabanaban.desklo.viewmodel.TicketListViewModel;
-import com.cabanaban.desklo.viewmodel.TicketListItemViewModel;
+import com.cabanaban.desklo.presentation.TicketListViewModel;
+import com.cabanaban.desklo.presentation.TicketListItemViewModel;
 import com.cabanaban.desklo.ui.TicketListViewModelObserver;
 import com.cabanaban.desklo.Services;
 import java.awt.Dimension;
@@ -171,7 +171,9 @@ public class TicketListUI extends javax.swing.JInternalFrame implements TicketLi
             ticketManagerUIComponent.update(ticketListItemViewModel);
             ticketManagerUIComponent.setMaximumSize(new Dimension(5000, 150));
             scrollViewPort.add(ticketManagerUIComponent);            
-        }
+        }    
+        scrollViewPort.revalidate();
+        scrollViewPort.repaint();
 
     }
 

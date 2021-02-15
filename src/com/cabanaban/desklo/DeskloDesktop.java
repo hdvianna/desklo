@@ -13,16 +13,20 @@ import com.cabanaban.desklo.repository.FakeListTicketRepository;
 import com.cabanaban.desklo.domain.UsersManager;
 import com.cabanaban.desklo.domain.TicketsManager;
 import com.cabanaban.desklo.domain.CurrentUserManager;
-import com.cabanaban.desklo.viewmodel.DefaultPresenter;
+import com.cabanaban.desklo.presentation.DefaultPresenter;
 import com.cabanaban.desklo.controller.Controller;
 import com.cabanaban.desklo.controller.Action;
 import com.cabanaban.desklo.controller.MainRequestHandler;
 import com.cabanaban.desklo.controller.TicketListRequestHandler;
 import com.cabanaban.desklo.controller.ShowCloseTicketRequestHandler;
+import com.cabanaban.desklo.controller.CancelCloseTicketRequestHandler;
+import com.cabanaban.desklo.controller.ConfirmCloseTicketRequestHandler;
 import com.cabanaban.desklo.controller.NotFoundRequestHandler;
 import com.cabanaban.desklo.ui.desktop.MainResponseHandler;
 import com.cabanaban.desklo.ui.desktop.TicketListResponseHandler;
 import com.cabanaban.desklo.ui.desktop.ShowCloseTicketResponseHandler;
+import com.cabanaban.desklo.ui.desktop.CancelCloseTicketResponseHandler;
+import com.cabanaban.desklo.ui.desktop.ConfirmCloseTicketResponseHandler;
 import com.cabanaban.desklo.ui.desktop.NotFoundResponseHandler;
 import com.cabanaban.desklo.ui.desktop.MainUI;
 import java.util.logging.Level;
@@ -33,7 +37,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class DeskloDesktop {
 
     public static void main(String[] args) {
-
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
@@ -87,6 +91,8 @@ public class DeskloDesktop {
         controller.addAction(Action.SHOW_MAIN, new MainRequestHandler(controller), new MainResponseHandler(controller, mainUI))
                 .addAction(Action.SHOW_MANAGE_TICKETS, new TicketListRequestHandler(controller), new TicketListResponseHandler(controller, mainUI))
                 .addAction(Action.SHOW_CLOSE_TICKET, new ShowCloseTicketRequestHandler(controller), new ShowCloseTicketResponseHandler(controller, mainUI))
+                .addAction(Action.CANCEL_CLOSE_TICKET, new CancelCloseTicketRequestHandler(controller), new CancelCloseTicketResponseHandler(controller, mainUI))
+                .addAction(Action.CLOSE_TICKET, new ConfirmCloseTicketRequestHandler(controller), new ConfirmCloseTicketResponseHandler(controller, mainUI))
                 .defaultAction(new NotFoundRequestHandler(controller), new NotFoundResponseHandler(controller, mainUI))
                 .dispatch(Action.SHOW_MAIN, null);
     }

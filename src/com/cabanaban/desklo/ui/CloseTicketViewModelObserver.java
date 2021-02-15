@@ -1,6 +1,6 @@
 package com.cabanaban.desklo.ui;
 
-import com.cabanaban.desklo.viewmodel.CloseTicketViewModel;
+import com.cabanaban.desklo.presentation.CloseTicketViewModel;
 
 public interface CloseTicketViewModelObserver {
 
