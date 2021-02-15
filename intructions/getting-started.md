@@ -58,6 +58,7 @@ Now click in the `File` menu and then in the `Project Properties` (if this item 
 After the project opened, in the Project tab, right-click the item "Desklo", then click in "Clean and Build" (see Figure 7). Figure 8 shows the expected output from the building process.
 
 **[Figure 7 - Building]**
+
 ![Netbeans project context menu ](https://raw.githubusercontent.com/hdvianna/desklo/main/intructions/build.png "Figure 7")
 
 **[Figure 8 - Building Result]**
