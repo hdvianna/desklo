@@ -6,10 +6,12 @@ import java.util.List;
 
 public interface UserRepository {
 
-    public abstract List<User> findAllUsers();
+    public List<User> findAllUsers();
 
-    public abstract List<Support> findAllSupporters();
+    public List<Support> findAllSupporters();
 
-    public abstract void saveUser(User user);
+    public User findUserByID(String ID);
+
+    public void saveUser(User user);
 
 }

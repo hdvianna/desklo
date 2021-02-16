@@ -10,10 +10,6 @@ import com.cabanaban.desklo.domain.TicketsManager;
 
 public interface Services {
 
-    public UserRepository getUserRepository();
-
-    public TicketRepository getTicketRepository();
-
     public UsersManager getUsersManager();
     
     public TicketsManager getTicketsManager();

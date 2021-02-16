@@ -21,11 +21,9 @@ public class ConfirmCloseTicketRequestHandler extends AbstractRequestHandler {
         String ticketID = requestData.get("ticketID");
         int serviceTime = Integer.parseInt(requestData.get("serviceTime"));
         Ticket ticket = services.getTicketsManager().getTicketByID(ticketID);
-        Support support = (Support) services.getCurrentUserManager().getUser();
-        support.closeTicket(ticket, serviceTime, ticketID);
-        services.getTicketsManager().saveTicket(ticket);
+        services.getTicketsManager().closeTicket(ticket, serviceTime, "");
         List<Ticket> tickets = services.getTicketsManager().getOpenTickets();
-        return services.getPresenter().createTicketListViewModel(tickets);
+        return services.getPresenter().createTicketListViewModel(tickets, services.getCurrentUserManager().getUser());
     }
     
 }

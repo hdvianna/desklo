@@ -12,10 +12,6 @@ import java.util.Map;
 
 public class Controller implements ActionDispatcher, Services {
 
-    private final UserRepository userRepository;
-
-    private final TicketRepository ticketRepository;
-
     private final CurrentUserManager currentUserManager;
     
     private final UsersManager usersManager;
@@ -29,9 +25,7 @@ public class Controller implements ActionDispatcher, Services {
     private RequestHandler defaultRequestHandler = null;
     private ResponseHandler defaultResponseHandler = null;
 
-    public Controller(UserRepository userRepository, TicketRepository ticketRepository, CurrentUserManager currentUserManager, UsersManager usersManager, TicketsManager ticketsManager, Presenter presenter) {
-        this.userRepository = userRepository;
-        this.ticketRepository = ticketRepository;
+    public Controller(CurrentUserManager currentUserManager, UsersManager usersManager, TicketsManager ticketsManager, Presenter presenter) {
         this.currentUserManager = currentUserManager;
         this.usersManager = usersManager;
         this.ticketsManager = ticketsManager;
@@ -61,17 +55,6 @@ public class Controller implements ActionDispatcher, Services {
         }
 
     }
-
-    @Override
-    public UserRepository getUserRepository() {
-        return userRepository;
-    }
-
-    @Override
-    public TicketRepository getTicketRepository() {
-        return ticketRepository;
-    }
-
 
     @Override
     public Presenter getPresenter() {

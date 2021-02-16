@@ -12,8 +12,8 @@ public interface Presenter {
     public MenuViewModel getSupportMenuViewModelInstance();
     public MainViewModel getMainViewModelInstance();
     public ResponseViewModel getNotFoundViewModelInstance();
-    public TicketListViewModel createTicketListViewModel(List<Ticket> tickets);
-    public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket);
+    public TicketListViewModel createTicketListViewModel(List<Ticket> tickets, User user);
+    public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket, User user);
     public CloseTicketViewModel createCloseTicketViewModel(Ticket ticket);
     public OpenTicketViewModel createOpenTicketViewModel(Ticket ticket);
     public MyTicketsViewModel createMyTicketsViewModel(List<Ticket> tickets);

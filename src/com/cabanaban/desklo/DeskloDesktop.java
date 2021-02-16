@@ -52,33 +52,36 @@ public class DeskloDesktop {
 
         FakeListUserRepository userRepository = new FakeListUserRepository(new LinkedList<User>());
         UsersManager usersManager = new UsersManager(userRepository);
-        usersManager.saveUser(user1);
-        usersManager.saveUser(user2);
-        usersManager.saveUser(user3);
-        usersManager.saveUser(support1);
-        usersManager.saveUser(support2);
-        usersManager.saveUser(support3);
+        userRepository.saveUser(user1);
+        userRepository.saveUser(user2);
+        userRepository.saveUser(user3);
+        userRepository.saveUser(support1);
+        userRepository.saveUser(support2);
+        userRepository.saveUser(support3);
 
         Ticket ticket1 = new Ticket(user1, "Nudge nudge.");
         Ticket ticket2 = new Ticket(user1, "Enciclopédias com páginas ausentes.");
         Ticket ticket3 = new Ticket(user2, "Não consigo atravessar o canal da mancha.");
         Ticket ticket4 = new Ticket(user3, "Bombons sem crocância suficiente.");
+        ticket4.setStatus(Status.DOING);
+        ticket4.setSupport(support1);
         Ticket ticket5 = new Ticket(user2, "Preciso de ajuda! Acho que quebrei meus dentes ao morder a catedral.");
         ticket5.setStatus(Status.DOING);
+        ticket5.setSupport(support1);
 
         FakeListTicketRepository ticketRespository = new FakeListTicketRepository(new LinkedList<Ticket>());
         TicketsManager ticketsManager = new TicketsManager(ticketRespository);
-        ticketsManager.saveTicket(ticket1);
-        ticketsManager.saveTicket(ticket2);
-        ticketsManager.saveTicket(ticket3);
-        ticketsManager.saveTicket(ticket4);
-        ticketsManager.saveTicket(ticket4);
-        ticketsManager.saveTicket(ticket5);
+        ticketRespository.saveTicket(ticket1);
+        ticketRespository.saveTicket(ticket2);
+        ticketRespository.saveTicket(ticket3);
+        ticketRespository.saveTicket(ticket4);
+        ticketRespository.saveTicket(ticket4);
+        ticketRespository.saveTicket(ticket5);
 
         CurrentUserManager currentUserManager = new CurrentUserManager(support1, ticketRespository, userRepository);
 
         DefaultPresenter presenter = new DefaultPresenter();     
-        Controller controller = new Controller(userRepository, ticketRespository, currentUserManager, usersManager, ticketsManager, presenter);
+        Controller controller = new Controller(currentUserManager, usersManager, ticketsManager, presenter);
         MainUI mainUI = new MainUI(controller);
         controller.addAction(Action.SHOW_MAIN, new MainRequestHandler(controller), new MainResponseHandler(controller, mainUI))
                 .addAction(Action.SHOW_MANAGE_TICKETS, new TicketListRequestHandler(controller), new TicketListResponseHandler(controller, mainUI))

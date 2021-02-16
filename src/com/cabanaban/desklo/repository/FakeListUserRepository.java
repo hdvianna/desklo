@@ -4,13 +4,16 @@ import com.cabanaban.entity.Support;
 import com.cabanaban.entity.User;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FakeListUserRepository implements UserRepository {
 
     private final List<User> users;
+    private long sequence;
 
     public FakeListUserRepository(List<User> users) {
         this.users = users;
+        sequence = users.size();
     }
 
     @Override
@@ -34,8 +37,14 @@ public class FakeListUserRepository implements UserRepository {
                 .filter(listUser -> user.equals(listUser))
                 .count();
         if (count == 0) {
+            sequence++;
+            user.setID(Long.toString(sequence));
             this.users.add(user);
         }
     }
 
+    @Override
+    public User findUserByID(String ID) {
+        return null;
+    }
 }

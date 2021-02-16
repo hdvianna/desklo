@@ -59,15 +59,15 @@ public class Ticket {
         this.currentCost += (serviceTime * (support.getCostPerHour()/60));
     }
     
-    public boolean canBeClosed() {
+    public boolean isCloseable() {
         return status == Status.DOING;
     }
     
-    public boolean canBeTransfered() {
+    public boolean isTransferable() {
         return status == Status.DOING;
     }
         
-    public boolean canBeAttended() {
+    public boolean isServiceable() {
         return status == Status.TODO;
     }
 

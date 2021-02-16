@@ -3,7 +3,10 @@ package com.cabanaban.desklo.domain;
 
 import com.cabanaban.desklo.repository.TicketRepository;
 import com.cabanaban.desklo.repository.UserRepository;
+import com.cabanaban.entity.Ticket;
 import com.cabanaban.entity.User;
+
+import java.util.List;
 
 public class CurrentUserManager {
     
@@ -20,5 +23,8 @@ public class CurrentUserManager {
     public User getUser() {
         return user;
     }
-    
+
+    public List<Ticket> getTickets() {
+        return this.ticketRepository.findTicketsByUser(user);
+    }
 }

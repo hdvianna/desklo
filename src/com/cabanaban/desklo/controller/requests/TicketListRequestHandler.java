@@ -20,7 +20,7 @@ public class TicketListRequestHandler extends AbstractRequestHandler {
         TicketsManager ticketsManager = services.getTicketsManager();
         List<Ticket> openTickets = ticketsManager.getOpenTickets();
         Presenter presenter = services.getPresenter();
-        return presenter.createTicketListViewModel(openTickets);
+        return presenter.createTicketListViewModel(openTickets, services.getCurrentUserManager().getUser());
     }
     
 }

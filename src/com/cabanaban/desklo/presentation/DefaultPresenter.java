@@ -79,7 +79,7 @@ public class DefaultPresenter implements Presenter {
     }
 
     @Override
-    public TicketListViewModel createTicketListViewModel(List<Ticket> tickets) {
+    public TicketListViewModel createTicketListViewModel(List<Ticket> tickets, User user) {
         TicketListViewModel ticketListViewModel = new TicketListViewModel();
         ticketListViewModel.actionHeaderLabel = "Ações";
         ticketListViewModel.affectUserHeaderLabel = "Usuário afetado";
@@ -89,13 +89,13 @@ public class DefaultPresenter implements Presenter {
         ticketListViewModel.title = "Tickets em atendimento";
         ticketListViewModel.ticketListItemsViewModel = tickets
                .stream()
-               .map(ticket -> createTicketListItemViewModel(ticket))
+               .map(ticket -> createTicketListItemViewModel(ticket, user))
                .collect(Collectors.toList());
         return ticketListViewModel;
     }
 
     @Override
-    public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket) {
+    public TicketListItemViewModel createTicketListItemViewModel(Ticket ticket, User user) {
         TicketListItemViewModel ticketListItemViewModel =  new TicketListItemViewModel();
         ticketListItemViewModel.attendActionText = "Atender";
         ticketListItemViewModel.transferActionText = "Transferir";
@@ -111,10 +111,9 @@ public class DefaultPresenter implements Presenter {
             ticketListItemViewModel.supporterName = ticket.getSupport().getName();
         }        
         ticketListItemViewModel.ticketID = ticket.getID();
-        ticketListItemViewModel.attendActionEnabled = ticket.canBeAttended();
-        ticketListItemViewModel.closeActionEnabled = ticket.canBeClosed();
-        ticketListItemViewModel.transferActionEnabled = ticket.canBeTransfered();
-        ticketListItemViewModel.attendActionEnabled = ticket.canBeAttended();
+        ticketListItemViewModel.attendActionEnabled = user.canAttendTicket(ticket);
+        ticketListItemViewModel.closeActionEnabled = user.canCloseTicket(ticket);
+        ticketListItemViewModel.transferActionEnabled = user.canTransferTicket(ticket);
         return ticketListItemViewModel;
     }
 

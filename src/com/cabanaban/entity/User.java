@@ -1,10 +1,8 @@
 package com.cabanaban.entity;
 
-import com.cabanaban.entity.NationalID;
-import com.cabanaban.entity.Phone;
-import com.cabanaban.entity.EMail;
-
 public class User {
+
+    private String ID;
 
     private String name;
 
@@ -22,6 +20,14 @@ public class User {
         this.setPhone(phone);
         this.setEmail(email);
         this.setSla(sla);
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getName() {
@@ -54,8 +60,8 @@ public class User {
 
     public final void setEmail(EMail email) {
         this.email = email;
-    }    
-    
+    }
+
     public int getSla() {
         return sla;
     }
@@ -63,6 +69,20 @@ public class User {
     public final void setSla(int sla) {
         this.sla = sla;
     }
-    
 
+    public boolean canAttendTicket(Ticket ticket) {
+        return ticket != null && ticket.isServiceable();
+    }
+
+    public boolean canTransferTicket(Ticket ticket) {
+        return ticket != null &&
+                this.equals(ticket.getSupport()) &&
+                ticket.isTransferable();
+    }
+
+    public boolean canCloseTicket(Ticket ticket) {
+        return ticket != null &&
+                this.equals(ticket.getSupport()) &&
+                ticket.isCloseable();
+    }
 }
