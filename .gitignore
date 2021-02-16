@@ -4,3 +4,4 @@ desklo-uml.asta.lock
 /dist/
 .idea/
 desklo.iml
+out/
