@@ -1,7 +1,10 @@
 package com.cabanaban.desklo.presentation;
 
 import com.cabanaban.desklo.controller.Action;
+import com.cabanaban.desklo.presentation.viewmodel.*;
 import com.cabanaban.entity.Ticket;
+import com.cabanaban.entity.User;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +12,7 @@ public class DefaultPresenter implements Presenter {
 
     private MainViewModel mainViewModel;
     private MenuViewModel userMenu;
-    private MenuViewModel supportMenu;    
+    private MenuViewModel supportMenu;
     
     @Override
     public MainViewModel getMainViewModelInstance() {
@@ -33,7 +36,7 @@ public class DefaultPresenter implements Presenter {
             userMenu.subItems[0].description = "Abrir ticket";
             userMenu.subItems[0].subItems = new MenuViewModel[0];
             userMenu.subItems[1] = new MenuViewModel();
-            userMenu.subItems[1].action = Action.SHOW_OWN_TICKETS;
+            userMenu.subItems[1].action = Action.SHOW_MY_TICKETS;
             userMenu.subItems[1].description = "Ver meus tickets";
             userMenu.subItems[1].subItems = new MenuViewModel[0];
             userMenu.subItems[2] = new MenuViewModel();
@@ -127,4 +130,57 @@ public class DefaultPresenter implements Presenter {
         return closeViewModel;
     }
 
+    @Override
+    public OpenTicketViewModel createOpenTicketViewModel(Ticket ticket) {
+        //TODO: Implement createOpenTicketViewModel
+        return null;
+    }
+
+    @Override
+    public MyTicketsViewModel createMyTicketsViewModel(List<Ticket> tickets) {
+        //TODO: Implement createMyTicketsViewModel
+        return null;
+    }
+
+    @Override
+    public SelectUserViewModel createSelectUserViewModel(User user) {
+        //TODO: Implement createSelectUserViewModel
+        return null;
+    }
+
+    @Override
+    public DashboardViewModel createDashboardViewModel(List<Ticket> tickets) {
+        //TODO: Implement createDashboardViewModel
+        return null;
+    }
+
+    @Override
+    public AttendTicketViewModel createAttendTicketViewModel(Ticket ticket) {
+        //TODO: Implement createAttendTicketViewModelv
+        return null;
+    }
+
+    @Override
+    public TransferTicketViewModel createTransferTicketViewModel(Ticket ticket) {
+        //TODO: Implement createTransferTicketViewModel
+        return null;
+    }
+
+    @Override
+    public UsersListViewModel createUsersListViewModel(List<User> users) {
+        //TODO: Implement createUsersListViewModel
+        return null;
+    }
+
+    @Override
+    public EditUserViewModel createEditUserViewModel(User user) {
+        //TODO: Implement createEditUserViewModel
+        return null;
+    }
+
+    @Override
+    public NewUserViewModel createNewUserViewModel(User user) {
+        //TODO: Implement  createNewUserViewModel
+        return null;
+    }
 }

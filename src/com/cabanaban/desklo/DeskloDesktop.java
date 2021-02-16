@@ -1,6 +1,9 @@
 package com.cabanaban.desklo;
 
 import java.util.LinkedList;
+
+import com.cabanaban.desklo.controller.requests.*;
+import com.cabanaban.desklo.controller.responses.*;
 import com.cabanaban.entity.NationalID;
 import com.cabanaban.entity.Phone;
 import com.cabanaban.entity.EMail;
@@ -16,19 +19,8 @@ import com.cabanaban.desklo.domain.CurrentUserManager;
 import com.cabanaban.desklo.presentation.DefaultPresenter;
 import com.cabanaban.desklo.controller.Controller;
 import com.cabanaban.desklo.controller.Action;
-import com.cabanaban.desklo.controller.MainRequestHandler;
-import com.cabanaban.desklo.controller.TicketListRequestHandler;
-import com.cabanaban.desklo.controller.ShowCloseTicketRequestHandler;
-import com.cabanaban.desklo.controller.CancelCloseTicketRequestHandler;
-import com.cabanaban.desklo.controller.ConfirmCloseTicketRequestHandler;
-import com.cabanaban.desklo.controller.NotFoundRequestHandler;
-import com.cabanaban.desklo.ui.desktop.MainResponseHandler;
-import com.cabanaban.desklo.ui.desktop.TicketListResponseHandler;
-import com.cabanaban.desklo.ui.desktop.ShowCloseTicketResponseHandler;
-import com.cabanaban.desklo.ui.desktop.CancelCloseTicketResponseHandler;
-import com.cabanaban.desklo.ui.desktop.ConfirmCloseTicketResponseHandler;
-import com.cabanaban.desklo.ui.desktop.NotFoundResponseHandler;
-import com.cabanaban.desklo.ui.desktop.MainUI;
+import com.cabanaban.desklo.controller.responses.MainResponseHandler;
+import com.cabanaban.desklo.presentation.ui.desktop.MainUI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -93,6 +85,29 @@ public class DeskloDesktop {
                 .addAction(Action.SHOW_CLOSE_TICKET, new ShowCloseTicketRequestHandler(controller), new ShowCloseTicketResponseHandler(controller, mainUI))
                 .addAction(Action.CANCEL_CLOSE_TICKET, new CancelCloseTicketRequestHandler(controller), new CancelCloseTicketResponseHandler(controller, mainUI))
                 .addAction(Action.CLOSE_TICKET, new ConfirmCloseTicketRequestHandler(controller), new ConfirmCloseTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_OPEN_TICKET, new CancelOpenTicketRequestHandler(controller), new CancelOpenTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_OPEN_TICKET, new ShowOpenTicketRequestHandler(controller), new ShowOpenTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.OPEN_TICKET, new ConfirmOpenTicketRequestHandler(controller), new ConfirmOpenTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_MY_TICKETS, new ShowMyTicketsRequestHandler(controller), new ShowMyTicketsResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_MY_TICKETS, new CancelMyTicketsRequestHandler(controller), new CancelMyTicketsResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_SELECT_USER, new ShowSelectUserRequestHandler(controller), new ShowSelectUserResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_SELECT_USER, new CancelSelectUserRequestHandler(controller), new CancelSelectUserResponseHandler(controller, mainUI))
+//                .addAction(Action.SELECT_USER, new ConfirmSelectUserRequestHandler(controller), new ConfirmSelectUserResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_TICKET_DASHBOARD, new ShowDashboardRequestHandler(controller), new ShowDashboardResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_TICKET_DASHBOARD, new CancelDashBoardRequestHandler(controller), new CancelDashBoardResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_ATTEND_TICKET, new ShowAttendTicketRequestHandler(controller), new ShowAttendTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_ATTEND_TICKET, new CancelAttendTicketRequestHandler(controller), new CancelAttendTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.ATTEND_TICKET, new ConfirmAttendTicketRequestHandler(controller), new ConfirmAttendTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_TRANSFER_TICKET, new ShowTransferTicketRequestHandler(controller), new ShowTransferTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_TRANSFER_TICKET, new CancelTransferTicketRequestHandler(controller), new CancelTransferTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.TRANSFER_TICKET, new ConfirmTransferTicketRequestHandler(controller), new ConfirmTransferTicketResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_MANAGE_USERS, new ShowUsersListRequestHandler(controller), new ShowUsersListResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_EDIT_USER, new ShowEditUserRequestHandler(controller), new ShowEditUserResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_EDIT_USER, new CancelEditUserRequestHandler(controller), new CancelEditUserResponseHandler(controller, mainUI))
+//                .addAction(Action.EDIT_USER, new ConfirmEditUserRequestHandler(controller), new ConfirmEditUserResponseHandler(controller, mainUI))
+//                .addAction(Action.SHOW_NEW_USER, new ShowNewUserRequestHandler(controller), new ShowNewUserResponseHandler(controller, mainUI))
+//                .addAction(Action.CANCEL_NEW_USER, new CancelNewUserRequestHandler(controller), new CancelNewUserResponseHandler(controller, mainUI))
+//                .addAction(Action.NEW_USER, new ConfirmNewUserRequestHandler(controller), new ConfirmNewUserResponseHandler(controller, mainUI))
                 .defaultAction(new NotFoundRequestHandler(controller), new NotFoundResponseHandler(controller, mainUI))
                 .dispatch(Action.SHOW_MAIN, null);
     }

@@ -23,7 +23,7 @@ public class TicketsManager {
     public List<Ticket> getOpenTickets() {
         List<Status> statusList = new ArrayList<>();
         statusList.add(Status.TODO);
-        statusList.add(Status.DOING);        
+        statusList.add(Status.DOING);
         return ticketRepository.findTicketsByStatusList(statusList);
     }
     
