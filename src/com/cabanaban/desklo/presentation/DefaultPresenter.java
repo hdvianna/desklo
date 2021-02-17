@@ -182,4 +182,10 @@ public class DefaultPresenter implements Presenter {
         //TODO: Implement  createNewUserViewModel
         return null;
     }
+
+    @Override
+    public SelectedUserResponseViewModel createSelectedUserResponseViewModel(List<Ticket> openTickets, List<Ticket> userTickets, User user) {
+        //TODO: Implement  createSelectedUserResponseViewModel
+        return null;
+    }
 }

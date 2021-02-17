@@ -14,5 +14,6 @@ public class CancelEditUserResponseHandler extends AbstractResponseHandler {
         /**
          * TODO: Implement CancelEditUserResponseHandler
          */
+        deskloUI.cancelEditUserUI();
     }
 }

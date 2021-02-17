@@ -25,6 +25,8 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
     private JMenuBar menuBar;
     private MainViewModel mainViewModel;
     private CloseTicketDialogUI closeTicketDialogUI;
+    private AttendTicketDialogUI attendTicketDialogUI;
+    private TransferTicketDialogUI transferTicketDialogUI;
     private Services services;
     private static MainUI instance = null;
     private TicketListUI ticketListUI;
@@ -146,7 +148,11 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
 
     @Override
     public void showAttendTicketUI(AttendTicketViewModel attendTicketViewModel) {
-        //TODO: Implement
+        attendTicketDialogUI = new AttendTicketDialogUI(this, true, services);
+        //TODO: Implement AttendTicketDialogUI.update(AttendTicketViewModel attendTicketViewModel)
+        //TODO: call attendTicketDialogUI.update(attendTicketViewModel);
+        attendTicketDialogUI.setLocationRelativeTo(ticketListUI);
+        attendTicketDialogUI.setVisible(true);        
     }
 
     @Override
@@ -161,7 +167,11 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
 
     @Override
     public void showTransferTicketUI(TransferTicketViewModel transferTicketViewModel) {
-        //TODO: Implement
+        transferTicketDialogUI = new TransferTicketDialogUI(this, true, services);
+        //TODO: Implement TransferTicketDialogUI.update(TransferTicketViewModel transferTicketViewModel)
+        //TODO: call attendTicketDialogUI.update(attendTicketViewModel);
+        transferTicketDialogUI.setLocationRelativeTo(ticketListUI);
+        transferTicketDialogUI.setVisible(true);
     }
 
     @Override
@@ -217,6 +227,31 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
     @Override
     public void confirmNewUserUI(UsersListViewModel usersListViewModel) {
         //TODO: Implement
+    }
+
+    @Override
+    public void cancelDashboardUI() {
+
+    }
+
+    @Override
+    public void showDashboardUI(TicketListViewModel ticketListViewModel) {
+
+    }
+
+    @Override
+    public void cancelSelectUserUI() {
+
+    }
+
+    @Override
+    public void showSelectUserUI(SelectUserViewModel selectUserViewModel) {
+
+    }
+
+    @Override
+    public void confirmSelectUserUI(SelectedUserResponseViewModel selectedUserResponseViewModel) {
+
     }
 
     public static MainUI getInstance(Services services, MainViewModel mainViewModel) {

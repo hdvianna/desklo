@@ -24,4 +24,5 @@ public interface Presenter {
     public UsersListViewModel createUsersListViewModel(List<User> users);
     public EditUserViewModel createEditUserViewModel(User user);
     public NewUserViewModel createNewUserViewModel(User user);
+    public SelectedUserResponseViewModel createSelectedUserResponseViewModel(List<Ticket> openTickets, List<Ticket> userTickets, User user);
 }

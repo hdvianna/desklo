@@ -2,6 +2,7 @@ package com.cabanaban.desklo.controller.responses;
 
 import com.cabanaban.desklo.Services;
 import com.cabanaban.desklo.presentation.ui.desktop.MainUI;
+import com.cabanaban.desklo.presentation.viewmodel.TicketListViewModel;
 
 public class ConfirmAttendTicketResponseHandler extends AbstractResponseHandler {
 
@@ -14,5 +15,6 @@ public class ConfirmAttendTicketResponseHandler extends AbstractResponseHandler 
         /**
          * TODO: Implement ConfirmAttendTicketResponseHandler
          */
+        deskloUI.confirmAttendTicketUI((TicketListViewModel) response);
     }
 }

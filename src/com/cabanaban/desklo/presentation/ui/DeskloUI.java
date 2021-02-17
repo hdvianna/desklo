@@ -48,4 +48,14 @@ public interface DeskloUI {
     void cancelNewUserUI();
 
     void confirmNewUserUI(UsersListViewModel usersListViewModel);
+
+    void cancelDashboardUI();
+
+    void showDashboardUI(TicketListViewModel ticketListViewModel);
+
+    void cancelSelectUserUI();
+
+    void showSelectUserUI(SelectUserViewModel selectUserViewModel);
+
+    void confirmSelectUserUI(SelectedUserResponseViewModel selectedUserResponseViewModel);
 }

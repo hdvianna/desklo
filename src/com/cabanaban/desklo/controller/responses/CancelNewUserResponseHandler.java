@@ -14,5 +14,6 @@ public class CancelNewUserResponseHandler extends AbstractResponseHandler {
         /**
          * TODO: Implement CancelNewUserResponseHandler
          */
+        deskloUI.cancelNewUserUI();
     }
 }

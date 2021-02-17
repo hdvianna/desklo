@@ -14,5 +14,6 @@ public class CancelTransferTicketResponseHandler extends AbstractResponseHandler
         /**
          * TODO: CancelTransferTicketResponseHandler
          */
+        deskloUI.cancelTransferTicketUI();
     }
 }

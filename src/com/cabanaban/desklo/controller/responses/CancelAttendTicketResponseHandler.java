@@ -13,5 +13,6 @@ public class CancelAttendTicketResponseHandler extends AbstractResponseHandler {
         /**
          * TODO: CancelAttendTicketResponseHandler
          */
+        deskloUI.cancelAttendTicketUI();
     }
 }

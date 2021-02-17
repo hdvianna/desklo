@@ -13,5 +13,6 @@ public class CancelDashBoardResponseHandler extends AbstractResponseHandler {
         /**
          * TODO: CancelDashBoardResponseHandler
          */
+        deskloUI.cancelDashboardUI();
     }
 }

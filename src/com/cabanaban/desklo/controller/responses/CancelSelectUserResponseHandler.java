@@ -14,5 +14,6 @@ public class CancelSelectUserResponseHandler extends AbstractResponseHandler {
         /**
          * TODO: CancelSelectUserResponseHandler
          */
+        deskloUI.cancelSelectUserUI();
     }
 }
