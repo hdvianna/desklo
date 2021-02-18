@@ -10,18 +10,22 @@ import java.util.List;
 
 public class CurrentUserManager {
     
-    private final User user;    
+    private User user;
     private final TicketRepository ticketRepository;
-    private final UserRepository userRespository;
+    private final UserRepository userRepository;
 
-    public CurrentUserManager(User user, TicketRepository ticketRepository, UserRepository userRespository) {
+    public CurrentUserManager(User user, TicketRepository ticketRepository, UserRepository userRepository) {
         this.user = user;
         this.ticketRepository = ticketRepository;
-        this.userRespository = userRespository;
+        this.userRepository = userRepository;
     }
 
     public User getUser() {
         return user;
+    }
+
+    public void switchUser(String userID) {
+        user = userRepository.findUserByID(userID);
     }
 
     public List<Ticket> getTickets() {
