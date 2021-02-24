@@ -155,8 +155,13 @@ public class DefaultPresenter implements Presenter {
 
     @Override
     public AttendTicketViewModel createAttendTicketViewModel(Ticket ticket) {
-        //TODO: Implement createAttendTicketViewModelv
-        return null;
+        AttendTicketViewModel attendTicketViewModel = new AttendTicketViewModel();
+        attendTicketViewModel.title = "Atender ticket #" + ticket.getID();
+        attendTicketViewModel.ticketID = ticket.getID();
+        attendTicketViewModel.message = "Confirma o início do atendimento do ticket #" + ticket.getID() + "?";
+        attendTicketViewModel.okLabel = "Ok";
+        attendTicketViewModel.canceLabel = "Cancelar";
+        return attendTicketViewModel;
     }
 
     @Override

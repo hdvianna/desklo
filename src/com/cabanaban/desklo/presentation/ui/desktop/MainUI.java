@@ -149,20 +149,22 @@ public class MainUI extends javax.swing.JFrame implements  MainViewModelObserver
     @Override
     public void showAttendTicketUI(AttendTicketViewModel attendTicketViewModel) {
         attendTicketDialogUI = new AttendTicketDialogUI(this, true, services);
-        //TODO: Implement AttendTicketDialogUI.update(AttendTicketViewModel attendTicketViewModel)
-        //TODO: call attendTicketDialogUI.update(attendTicketViewModel);
+        attendTicketDialogUI.update(attendTicketViewModel);
         attendTicketDialogUI.setLocationRelativeTo(ticketListUI);
-        attendTicketDialogUI.setVisible(true);        
+        attendTicketDialogUI.setVisible(true);
     }
 
     @Override
     public void cancelAttendTicketUI() {
-        //TODO: Implement
+        attendTicketDialogUI.dispose();
+        attendTicketDialogUI = null;
     }
 
     @Override
     public void confirmAttendTicketUI(TicketListViewModel ticketListViewModel) {
-        //TODO: Implement
+        ticketListUI.update(ticketListViewModel);
+        attendTicketDialogUI.dispose();
+        attendTicketDialogUI = null;
     }
 
     @Override

@@ -3,6 +3,8 @@
 package com.cabanaban.desklo.presentation.ui.desktop;
 
 import com.cabanaban.desklo.Services;
+import com.cabanaban.desklo.presentation.viewmodel.AttendTicketViewModel;
+
 import java.awt.FlowLayout;
 
 public class AttendTicketDialogUI extends javax.swing.JDialog {
@@ -47,7 +49,12 @@ public class AttendTicketDialogUI extends javax.swing.JDialog {
         FlowLayout layot = new FlowLayout();
         getContentPane().setLayout(layot);
         getContentPane().add(attendTicketForm);
-        setSize(300, 200);
+        setSize(400, 200);
+    }
+
+    public void update(AttendTicketViewModel attendTicketViewModel) {
+        setTitle(attendTicketViewModel.title);
+        attendTicketForm.update(attendTicketViewModel);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
